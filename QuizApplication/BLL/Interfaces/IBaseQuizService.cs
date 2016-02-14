@@ -9,8 +9,8 @@ namespace BLL.Interfaces
 {
     public interface IBaseQuizService
     {
-        SubjectDTO Get(Guid id);
-        //IEnumerable<T> GetAll();
+        //SubjectDTO Get(Guid id);
+        IEnumerable<SubjectDTO> GetAll();
         void Dispose();
     }
 }

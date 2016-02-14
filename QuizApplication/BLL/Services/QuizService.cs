@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class OrderService : IBaseQuizService
+    public class QuizService : IBaseQuizService
     {
         IUnitOfWork Database { get; set; }
-        public OrderService(IUnitOfWork uow)
+        public QuizService(IUnitOfWork uow)
         {
             Database = uow;
         }
@@ -32,6 +32,12 @@ namespace BLL.Services
         public void Dispose()
         {
             Database.Dispose();
+        }
+
+        public IEnumerable<SubjectDTO> GetAll()
+        {
+            Mapper.CreateMap<Subject, SubjectDTO>();
+            return Mapper.Map<IEnumerable<Subject>, List<SubjectDTO>>(Database.Subjects.GetAll());
         }
     }
 }

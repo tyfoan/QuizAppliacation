@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using BLL.DTO;
+using BLL.Interfaces;
+using PresentationMVC.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +12,13 @@ namespace PresentationMVC.Controllers
 {
     public class HomeController : Controller
     {
+        IBaseQuizService service;
+
+        public HomeController(IBaseQuizService service)
+        {
+            this.service = service;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -24,6 +35,12 @@ namespace PresentationMVC.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult Test()
+        {
+            Mapper.CreateMap<Subject, SubjectDTO>();
+            var subject = Mapper.Map<IEnumerable<SubjectDTO>, List<Subject>>(service.GetAll());
             return View();
         }
     }

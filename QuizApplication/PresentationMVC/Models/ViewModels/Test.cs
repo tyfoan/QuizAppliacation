@@ -1,14 +1,13 @@
-﻿using DAL.Entities;
-using DAL.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PresentationMVC.Models.Enums;
 
-namespace BLL.DTO
+namespace PresentationMVC.Models.ViewModels
 {
-    public class TestDTO
+    public class Test
     {
         public Guid TestId { get; set; }
         public string Name { get; set; }
@@ -18,8 +17,9 @@ namespace BLL.DTO
         public int Duration { get; set; }
 
 
-        public List<TestPassDTO> TestPases { get; set; }
-        public List<QuestionDTO> Questions { get; set; }
+        public ICollection<TestPass> TestPases { get; set; }
+        public ICollection<Question> Questions { get; set; }
+        public Subject Subject { get; set; }
 
     }
 }
