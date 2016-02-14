@@ -10,7 +10,7 @@ namespace DAL.Entities
     {
         public Guid SubjectId { get; set; }
         public string Name { get; set; }
-        public Enum Complexity { get; set; }
+        public Complexity Complexity { get; set; }
         public int Rate { get; set; }
         public int TestAmount { get; set; }
 

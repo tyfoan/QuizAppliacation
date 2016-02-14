@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    public class Role
+    public enum Complexity
     {
-        public Guid RoleId { get; set; }
-        public string Name { get; set; }
-        public ICollection<User> Users { get; set; }
-
+        Starter = 1,
+        Essential = 2,
+        Advanced = 3,
+        Professional = 4
     }
 }
