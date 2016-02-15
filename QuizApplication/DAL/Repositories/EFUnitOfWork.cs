@@ -17,8 +17,11 @@ namespace DAL.Repositories
         private QuestionRepository questionRep;
         private TestRepository testRep;
         private UserRepository userRep;
-        private SujectRepository subjectRep;
-
+        private SubjectRepository subjectRep;
+        public EFUnitOfWork()
+        {
+            db = new QuizContext();
+        }
 
 
         public IRepository<Answer> Answers
@@ -47,7 +50,7 @@ namespace DAL.Repositories
             get
             {
                 if (subjectRep == null)
-                    subjectRep = new SujectRepository(db);
+                    subjectRep = new SubjectRepository(db);
                 return subjectRep;
             }
         }

@@ -51,9 +51,7 @@
     <Compile Include="EF\QuizContext.cs" />
     <Compile Include="EF\QuizDBInitializer.cs" />
     <Compile Include="Entities\Answer.cs" />
-    <Compile Include="Enums\Complexity.cs" />
     <Compile Include="Entities\Question.cs" />
-    <Compile Include="Enums\Rate.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Subject.cs" />
     <Compile Include="Entities\Test.cs" />
@@ -73,7 +71,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EnumModels\EnumModels.csproj">
+      <Project>{16ec2b09-a71d-4b5b-bb62-19cfc0929f22}</Project>
+      <Name>EnumModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

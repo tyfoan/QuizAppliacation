@@ -39,9 +39,9 @@ namespace PresentationMVC.Controllers
         }
         public ActionResult Test()
         {
-            Mapper.CreateMap<Subject, SubjectDTO>();
-            var subject = Mapper.Map<IEnumerable<SubjectDTO>, List<Subject>>(service.GetAll());
-            return View();
+            Mapper.CreateMap<SubjectDTO, Subject>();
+            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDTO>, List<Subject>>(service.GetAll());
+            return View(subjects);
         }
     }
 }

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class SujectRepository: IRepository<Subject>
+    class SubjectRepository: IRepository<Subject>
     {
         private QuizContext db;
-        public SujectRepository(QuizContext context)
+        public SubjectRepository(QuizContext context)
         {
             this.db = context;
         }
@@ -21,7 +21,7 @@ namespace DAL.Repositories
         {
             return db.Subjects;
         }
-
+        
         public Subject Get(Guid id)
         {
             return db.Subjects.Find(id);

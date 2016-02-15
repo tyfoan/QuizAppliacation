@@ -186,8 +186,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Enums\Complexity.cs" />
-    <Compile Include="Models\Enums\Rate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\Answer.cs" />
@@ -276,6 +274,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{d589f09b-c8d2-4ab5-be53-b05426a6b033}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnumModels\EnumModels.csproj">
+      <Project>{16ec2b09-a71d-4b5b-bb62-19cfc0929f22}</Project>
+      <Name>EnumModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

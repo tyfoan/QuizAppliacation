@@ -12,8 +12,8 @@ namespace BLL.DTO
         public string Login { get; set; }
         public string Password { get; set; }
         public string PasswordHash { get; set; }
-        public DateTime AddedDate { get; set; }
-        public DateTime LastVisitDate { get; set; }
+        //public DateTime AddedDate { get; set; }
+        //public DateTime LastVisitDate { get; set; }
         public string AvatarPath { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

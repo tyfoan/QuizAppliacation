@@ -8,7 +8,7 @@ namespace DAL.Entities
 {
     public class Question
     {
-        public Guid GuestionId { get; set; }
+        public Guid QuestionId { get; set; }
         public string QuestionContent { get; set; }
 
         public ICollection<Answer> Answers { get; set; }
