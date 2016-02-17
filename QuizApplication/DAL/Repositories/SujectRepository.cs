@@ -21,6 +21,7 @@ namespace DAL.Repositories
         {
             return db.Subjects;
         }
+
         
         public Subject Get(Guid id)
         {

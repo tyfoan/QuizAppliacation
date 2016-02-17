@@ -19,9 +19,10 @@ namespace DAL.Entities
         public string MiddleName { get; set; }
         public string LastName { get; set; }
 
-        public ICollection<Role> Roles { get; set; }
-        public ICollection<TestPass> TestPasses { get; set; }
-        public ICollection<Subject> Subjects { get; set; }
 
+
+        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<Subject> Subjects { get; set; }
+        public virtual ICollection<TestPass> TestPasses { get; set; }
     }
 }

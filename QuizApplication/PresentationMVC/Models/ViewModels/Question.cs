@@ -11,7 +11,6 @@ namespace PresentationMVC.Models.ViewModels
         public Guid GuestionId { get; set; }
         public string QuestionContent { get; set; }
 
-        public ICollection<Answer> Answers { get; set; }
-        public Test Test { get; set; }
+        public List<Answer> Answers { get; set; }
     }
 }

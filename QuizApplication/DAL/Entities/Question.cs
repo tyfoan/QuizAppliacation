@@ -11,7 +11,7 @@ namespace DAL.Entities
         public Guid QuestionId { get; set; }
         public string QuestionContent { get; set; }
 
-        public ICollection<Answer> Answers { get; set; }
-        public Test Test { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
+        public virtual Test Test { get; set; }
     }
 }

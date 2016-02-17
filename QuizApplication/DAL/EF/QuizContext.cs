@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace DAL.EF
 {
@@ -15,7 +16,6 @@ namespace DAL.EF
         public DbSet<Role> Roles { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Test> Tests { get; set; }
-        public DbSet<TestPass> TestPassses { get; set; }
         public DbSet<User> Users { get; set; }
 
         public QuizContext()

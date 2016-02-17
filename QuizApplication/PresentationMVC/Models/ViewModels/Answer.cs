@@ -13,7 +13,5 @@ namespace PresentationMVC.Models.ViewModels
         public string ContentAnswer { get; set; }
         public string TrueAnswer { get; set; }
         public string StudentsAnswer { get; set; }
-
-        public Question Question { get; set; }
     }
 }

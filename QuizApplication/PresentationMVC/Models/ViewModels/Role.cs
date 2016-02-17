@@ -10,7 +10,7 @@ namespace PresentationMVC.Models.ViewModels
     {
         public Guid RoleId { get; set; }
         public string Name { get; set; }
-        public ICollection<User> Users { get; set; }
+        public List<User> Users { get; set; }
 
     }
 }

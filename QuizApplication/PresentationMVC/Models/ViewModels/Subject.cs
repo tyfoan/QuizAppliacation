@@ -17,7 +17,6 @@ namespace PresentationMVC.Models.ViewModels
         public int TestAmount { get; set; }
 
 
-        public ICollection<Test> Tests { get; set; }
-        public User User { get; set; }
+        public List<Test> Tests { get; set; }
     }
 }

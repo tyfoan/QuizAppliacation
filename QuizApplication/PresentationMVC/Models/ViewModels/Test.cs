@@ -17,9 +17,8 @@ namespace PresentationMVC.Models.ViewModels
         public int Duration { get; set; }
 
 
-        public ICollection<TestPass> TestPases { get; set; }
-        public ICollection<Question> Questions { get; set; }
-        public Subject Subject { get; set; }
+        public List<Question> Questions { get; set; }
+        public List<TestPass> TestPasses { get; set; }
 
     }
 }

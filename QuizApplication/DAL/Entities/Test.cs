@@ -17,9 +17,11 @@ namespace DAL.Entities
         public int Duration { get; set; }
 
 
-        public ICollection<TestPass> TestPases { get; set; }
-        public ICollection<Question> Questions { get; set; }
-        public Subject Subject { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
+
+        //public Guid SubjectId { get; set; }
+        public virtual Subject Subject { get; set; }
+        public virtual ICollection<TestPass> TestPasses { get; set; }
 
     }
 }

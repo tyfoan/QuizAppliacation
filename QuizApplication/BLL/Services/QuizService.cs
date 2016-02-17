@@ -36,8 +36,17 @@ namespace BLL.Services
 
         public IEnumerable<SubjectDTO> GetAll()
         {
+
+            
+            Mapper.CreateMap<Test, TestDTO>();
+            Mapper.CreateMap<Question, QuestionDTO>();
+            Mapper.CreateMap<Answer, AnswerDTO>();
+            //var xe = Mapper.Map<IEnumerable<Test>, List<TestDTO>>(Database.Tests.GetAll());
+
             Mapper.CreateMap<Subject, SubjectDTO>();
+                //.ForMember(s => s.Tests, y => y.MapFrom(m => m.Tests = xe));
             return Mapper.Map<IEnumerable<Subject>, List<SubjectDTO>>(Database.Subjects.GetAll());
+
         }
     }
 }

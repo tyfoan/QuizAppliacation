@@ -21,7 +21,14 @@ namespace PresentationMVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            Mapper.CreateMap<TestDTO, Test>();
+            Mapper.CreateMap<QuestionDTO, Question>();
+            Mapper.CreateMap<AnswerDTO, Answer>();
+
+            //Mapper.CreateMap<Subject, SubjectDTO>();
+            Mapper.CreateMap<SubjectDTO, Subject>();
+            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDTO>, List<Subject>>(service.GetAll());
+            return View(subjects);
         }
 
         public ActionResult About()
@@ -39,9 +46,7 @@ namespace PresentationMVC.Controllers
         }
         public ActionResult Test()
         {
-            Mapper.CreateMap<SubjectDTO, Subject>();
-            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDTO>, List<Subject>>(service.GetAll());
-            return View(subjects);
+            return View();
         }
     }
 }

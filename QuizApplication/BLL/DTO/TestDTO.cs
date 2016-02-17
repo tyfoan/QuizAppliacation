@@ -18,8 +18,8 @@ namespace BLL.DTO
         public int Duration { get; set; }
 
 
-        public List<TestPassDTO> TestPases { get; set; }
         public List<QuestionDTO> Questions { get; set; }
+        public List<TestPassDTO> TestPasses { get; set; }
 
     }
 }

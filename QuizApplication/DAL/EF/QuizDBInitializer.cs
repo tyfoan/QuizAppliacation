@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAL.EF
 {
-    class QuizDBInitializer : DropCreateDatabaseIfModelChanges<QuizContext>
+    class QuizDBInitializer : DropCreateDatabaseAlways<QuizContext>
     {
         protected override void Seed(QuizContext context)
         {
@@ -39,10 +39,11 @@ namespace DAL.EF
 
             List<Test> tests = new List<Test>() 
             {
+                //new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, QuestionAmount = questions.Count, Duration = 60*60*36, Questions = questions  },
                 new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, QuestionAmount = questions.Count, Duration = 60*60*36, Questions = questions  }
             };
             tests.ForEach(s => context.Tests.Add(s));
-
+            
 
 
             List<Subject> subjects = new List<Subject>()

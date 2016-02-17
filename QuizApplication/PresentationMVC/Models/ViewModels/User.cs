@@ -19,9 +19,10 @@ namespace PresentationMVC.Models.ViewModels
         public string MiddleName { get; set; }
         public string LastName { get; set; }
 
-        public ICollection<Role> Roles { get; set; }
-        public ICollection<TestPass> TestPasses { get; set; }
-        public ICollection<Subject> Subjects { get; set; }
+
+        public List<Role> Roles { get; set; }
+        public List<Subject> Subjects { get; set; }
+        public List<TestPass> TestPasses { get; set; }
 
     }
 }

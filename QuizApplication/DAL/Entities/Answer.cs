@@ -14,6 +14,7 @@ namespace DAL.Entities
         public string TrueAnswer { get; set; }
         public string StudentsAnswer { get; set; }
 
-        public Question Question { get; set; }
+
+        public virtual Question Question { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,8 @@ namespace BLL.DTO
         public string LastName { get; set; }
 
 
-        public List<TestPassDTO> TestPasses { get; set; }
         public List<SubjectDTO> Subjects { get; set; }
+        public List<TestPassDTO> TestPasses { get; set; }
 
     }
 }
