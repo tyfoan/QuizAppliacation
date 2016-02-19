@@ -12,45 +12,76 @@ namespace DAL.EF
     {
         protected override void Seed(QuizContext context)
         {
-            List<Answer> answers_q1 = new List<Answer>() 
+            List<Subject> subjects = new List<Subject>()
             {
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Сергей", StudentsAnswer = "", TrueAnswer = "Сергей" },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей" },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей" },
-
+                new Subject() { SubjectId = Guid.NewGuid(), Complexity = Complexity.Starter, Name = "Вокруг света", Rate = null, TestAmount = 1 },
+                new Subject() { SubjectId = Guid.NewGuid(), Complexity = Complexity.Starter, Name = "Back end", Rate = null, TestAmount = 3 }
             };
-            List<Answer> answers_q2 = new List<Answer>() 
+            subjects.ForEach(s => context.Subjects.Add(s));
+
+
+            
+            List<Test> tests = new List<Test>() 
             {
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах" },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах" },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О гражданской войне в России", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах" }
+                new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, Duration = 60*30, Subject = subjects[0] },
+                new Test() { TestId = Guid.NewGuid(), Name = "Тест по специальности .net", Complexity = Complexity.Starter, Rate = null, Duration = 60*36 , Subject = subjects[1]},
+                new Test() { TestId = Guid.NewGuid(), Name = "Тест на беременность", Complexity = Complexity.Starter, Rate = null, Duration = 60*36, Subject = subjects[1] },
+                new Test() { TestId = Guid.NewGuid(), Name = "Тост за дружбу", Complexity = Complexity.Starter, Rate = null, Duration = 60*36 , Subject = subjects[1] }
             };
-            answers_q1.ForEach(s => context.Answers.Add(s));
-            answers_q2.ForEach(s => context.Answers.Add(s));
 
+            tests.ForEach(s => context.Tests.Add(s));
 
             List<Question> questions = new List<Question>()
             {
-                new Question() { Answers = answers_q1, QuestionId = Guid.NewGuid(), QuestionContent = "Какое имя отца А. С. Пушкина?" },
-                new Question() { Answers = answers_q2, QuestionId = Guid.NewGuid(), QuestionContent = "О чем книга Тихий Дон?" }
+                new Question() { QuestionId = Guid.NewGuid(), QuestionContent = "Какое имя отца А. С. Пушкина?", Test = tests[0] },
+                new Question() { QuestionId = Guid.NewGuid(), QuestionContent = "О чем книга Тихий Дон?", Test = tests[0] },
+                new Question() { QuestionId = Guid.NewGuid(), QuestionContent = "По чем сиги?", Test = tests[1] },
+
+                new Question() { QuestionId = Guid.NewGuid(), QuestionContent = "Какое имя отца А. С. Пушкина?", Test = tests[1] },
+                new Question() { QuestionId = Guid.NewGuid(), QuestionContent = "О чем книга Тихий Дон?", Test = tests[2] },
+                new Question() { QuestionId = Guid.NewGuid(), QuestionContent = "По чем сиги?", Test = tests[3] }
             };
             questions.ForEach(s => context.Questions.Add(s));
 
 
-            List<Test> tests = new List<Test>() 
+            List<Answer> answers_q1 = new List<Answer>() 
             {
-                //new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, QuestionAmount = questions.Count, Duration = 60*60*36, Questions = questions  },
-                new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, QuestionAmount = questions.Count, Duration = 60*60*36, Questions = questions  }
-            };
-            tests.ForEach(s => context.Tests.Add(s));
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Сергей", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0]},
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
+
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О гражданской войне в России", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
+
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "За два забирай", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Все по 3", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
+
+
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Сергей", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3]},
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3] },
+
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О гражданской войне в России", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
+
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "За два забирай", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Все по 3", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] }
+
+            };            
+            answers_q1.ForEach(s => context.Answers.Add(s));
+
+
+
             
 
 
-            List<Subject> subjects = new List<Subject>()
-            {
-                new Subject() { SubjectId = Guid.NewGuid(), Complexity = Complexity.Starter, Name = "Вокруг света", Rate = null, TestAmount = tests.Count, Tests = tests }
-            };
-            subjects.ForEach(s => context.Subjects.Add(s));
+
+
+            
 
             //context.Subjects.Add(new Subject() { SubjectId = Guid.NewGuid(), Complexity = Complexity.Starter, Name = "Вокруг света", Rate = null, TestAmount = tests.Count, Tests = tests });
 
