@@ -1,0 +1,41 @@
+﻿@model PresentationMVC.Models.ViewModels.Test
+
+@{
+    ViewBag.Title = "AboutTest";
+}
+
+<h2>AboutTest</h2>
+
+<div>
+    <h4>Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "List")
+</p>

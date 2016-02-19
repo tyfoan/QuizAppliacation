@@ -21,11 +21,11 @@ namespace BLL.Services
 
 
 
-        public SubjectDTO Get(Guid id)
-        {
-            Mapper.CreateMap<Subject, SubjectDTO>();
-            return Mapper.Map<Subject, SubjectDTO>(Database.Subjects.Get(id));
-        }
+        //public SubjectDTO Get(Guid id)
+        //{
+        //    Mapper.CreateMap<Subject, SubjectDTO>();
+        //    return Mapper.Map<Subject, SubjectDTO>(Database.Subjects.Get(id));
+        //}
 
 
 
@@ -47,6 +47,12 @@ namespace BLL.Services
                 //.ForMember(s => s.Tests, y => y.MapFrom(m => m.Tests = xe));
             return Mapper.Map<IEnumerable<Subject>, List<SubjectDTO>>(Database.Subjects.GetAll());
 
+        }
+
+        public TestDTO Get(Guid id)
+        {
+            Mapper.CreateMap<Test, TestDTO>();
+            return Mapper.Map<Test, TestDTO>(Database.Tests.Get(id));
         }
     }
 }
