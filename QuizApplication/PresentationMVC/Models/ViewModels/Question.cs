@@ -8,7 +8,7 @@ namespace PresentationMVC.Models.ViewModels
 {
     public class Question
     {
-        public Guid GuestionId { get; set; }
+        public Guid QuestionId { get; set; }
         public string QuestionContent { get; set; }
 
         public List<Answer> Answers { get; set; }

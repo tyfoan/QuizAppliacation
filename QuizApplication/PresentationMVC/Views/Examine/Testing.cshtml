@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PresentationMVC.Models.ViewModels.Question>
+
+@{
+    ViewBag.Title = "Testing";
+}
+
+<h2>Testing</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+    int radio = 0;
+    foreach (var item in Model)
+    {
+    <h4>@item.QuestionContent</h4>
+    <hr />
+    <ul class="Testing">
+        @foreach (var innerItem in item.Answers)
+        {
+        <li>
+            <label><input type="radio" name="name @radio" value="" /> @innerItem.ContentAnswer </label>
+        </li>
+        }
+    </ul>
+    radio += 1;
+    }
+    <input type="submit" class="btn btn-success" value="Закончить тест">
+    }
+</div>
+<p>
+    @{
+    //TODO: обработку на пустые radiobutton/checkbox
+    //TODO: защита от дурака. предварительный выход из тестов. -1 попытка.
+    //TODO: Запрет на копирование вопроса и вариантов ответва.
+    }
+
+
+    @*@Html.ActionLink("Back to List", "List", "Catalog")*@
+</p>

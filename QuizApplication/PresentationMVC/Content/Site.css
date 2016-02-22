@@ -70,6 +70,10 @@ a {
 #right{
     float: right;
 }
-hr{
+.hr{
     margin-top:80px;
+}
+
+.Testing li{
+    list-style-type: none;
 }

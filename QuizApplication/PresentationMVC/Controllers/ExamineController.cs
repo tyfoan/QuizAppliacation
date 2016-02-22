@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using BLL.DTO;
+using BLL.Interfaces;
+using PresentationMVC.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +12,12 @@ namespace PresentationMVC.Controllers
 {
     public class ExamineController : Controller
     {
+        IBaseQuizService _service;
+
+        public ExamineController(IBaseQuizService service)
+        {
+            this._service = service;
+        }
         // GET: Examine
         public ActionResult Index()
         {
@@ -16,7 +26,12 @@ namespace PresentationMVC.Controllers
 
         public ActionResult Testing(Guid testId)
         {
-            return View();
+            //Mapper.CreateMap<ThemeDTO, Theme>();
+            Mapper.CreateMap<TestDTO, Test>();
+            Test test = Mapper.Map<TestDTO, Test>(_service.Get(testId));
+            List<Question> questions = test.Questions;
+
+            return View(questions);
         }
 
         public ActionResult EndTest()

@@ -8,7 +8,7 @@ namespace BLL.DTO
 {
     public class QuestionDTO
     {
-        public Guid GuestionId { get; set; }
+        public Guid QuestionId { get; set; }
         public string QuestionContent { get; set; }
 
         public List<AnswerDTO> Answers { get; set; }

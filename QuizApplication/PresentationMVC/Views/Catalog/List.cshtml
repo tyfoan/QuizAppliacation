@@ -44,6 +44,9 @@
                                 <td>@innerItem.Questions.Count</td>
                                 <td>@innerItem.Rate</td>
                                 <td>
+                                    @{
+                                      //TODO: Зачем передают ew { testId = innerItem.TestId, Subject = item.Name, Test = innerItem.Name } fix.
+                                    }
                                     <a href="@Url.Action("AboutTest", "Catalog", new { testId = innerItem.TestId, Subject = item.Name, Test = innerItem.Name }, null)">
                                         <button type="button" class="btn btn-primary">Пройти тест</button>
                                     </a>

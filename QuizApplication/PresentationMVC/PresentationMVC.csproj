@@ -261,12 +261,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Catalog\List.cshtml" />
     <Content Include="Views\Catalog\AboutTest.cshtml" />
+    <Content Include="Views\Examine\Testing.cshtml" />
+    <Content Include="Views\Examine\EndTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Asserts\" />
     <Folder Include="Scripts\Asserts\" />
-    <Folder Include="Views\Examine\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
