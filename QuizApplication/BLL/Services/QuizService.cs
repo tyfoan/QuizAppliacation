@@ -37,7 +37,7 @@ namespace BLL.Services
         public IEnumerable<SubjectDTO> GetAll()
         {
 
-            
+            Mapper.CreateMap<Theme, ThemeDTO>();
             Mapper.CreateMap<Test, TestDTO>();
             Mapper.CreateMap<Question, QuestionDTO>();
             Mapper.CreateMap<Answer, AnswerDTO>();
@@ -51,6 +51,7 @@ namespace BLL.Services
 
         public TestDTO Get(Guid id)
         {
+            Mapper.CreateMap<Theme, ThemeDTO>();
             Mapper.CreateMap<Test, TestDTO>();
             return Mapper.Map<Test, TestDTO>(Database.Tests.Get(id));
         }

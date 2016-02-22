@@ -53,6 +53,7 @@
     <Compile Include="DTO\SubjectDTO.cs" />
     <Compile Include="DTO\TestDTO.cs" />
     <Compile Include="DTO\TestPassDTO.cs" />
+    <Compile Include="DTO\ThemeDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Interfaces\IBaseQuizService.cs" />

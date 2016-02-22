@@ -11,17 +11,18 @@ namespace DAL.Entities
     {
         public Guid TestId { get; set; }
         public string Name { get; set; }
-        public Complexity Complexity { get; set; }
-        public Rate? Rate { get; set; }
+        public Complexity Complexity { get; set; } //сложность теста
+        public Rate? Rate { get; set; } //рейт теста. 1-5 звездочек. Общее-кол-во звездочек / кол-во отзывов = Rate.
         public int QuestionAmount { get; set; }
         public int Duration { get; set; }
+        public bool IsApproved { get; set; }
+
 
 
         public virtual ICollection<Question> Questions { get; set; }
-
-        //public Guid SubjectId { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual ICollection<TestPass> TestPasses { get; set; }
+        public virtual ICollection<Theme> Themes { get; set; }
 
     }
 }

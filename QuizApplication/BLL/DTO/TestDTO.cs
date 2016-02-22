@@ -16,10 +16,11 @@ namespace BLL.DTO
         public Rate? Rate { get; set; }
         public int QuestionAmount { get; set; }
         public int Duration { get; set; }
+        public bool IsApproved { get; set; }
 
 
+        public List<ThemeDTO> Themes { get; set; }
         public List<QuestionDTO> Questions { get; set; }
         public List<TestPassDTO> TestPasses { get; set; }
-
     }
 }

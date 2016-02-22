@@ -23,13 +23,35 @@ namespace DAL.EF
             
             List<Test> tests = new List<Test>() 
             {
-                new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, Duration = 60*30, Subject = subjects[0] },
+                new Test() { TestId = Guid.NewGuid(), Name = "Общеобразовательный тест", Complexity = Complexity.Starter, Rate = null, Duration = 60*30, Subject = subjects[0]},
                 new Test() { TestId = Guid.NewGuid(), Name = "Тест по специальности .net", Complexity = Complexity.Starter, Rate = null, Duration = 60*36 , Subject = subjects[1]},
                 new Test() { TestId = Guid.NewGuid(), Name = "Тест на беременность", Complexity = Complexity.Starter, Rate = null, Duration = 60*36, Subject = subjects[1] },
                 new Test() { TestId = Guid.NewGuid(), Name = "Тост за дружбу", Complexity = Complexity.Starter, Rate = null, Duration = 60*36 , Subject = subjects[1] }
             };
 
             tests.ForEach(s => context.Tests.Add(s));
+
+
+            List<Theme> themes = new List<Theme>()
+            {
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Массивы", Test = tests[0] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Переменные", Test = tests[0] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Типы данных", Test = tests[0] },
+
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Условные конструкции", Test = tests[1] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Методы", Test = tests[1] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Виды методов", Test = tests[1] },
+
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Логические операции", Test = tests[2] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Побитовые операции", Test = tests[2] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Циклические конструкции", Test = tests[2] },
+
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Знакомство с языком C#", Test = tests[3] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Машинная математика", Test = tests[3] },
+                new Theme() { ThemeId = Guid.NewGuid(), Name = "Системы исчисления", Test = tests[3] }
+
+            };
+            themes.ForEach(x => context.Themes.Add(x));
 
             List<Question> questions = new List<Question>()
             {
@@ -71,17 +93,17 @@ namespace DAL.EF
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Все по 3", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] }
 
-            };            
+            };
             answers_q1.ForEach(s => context.Answers.Add(s));
 
 
 
-            
 
 
 
 
-            
+
+
 
             //context.Subjects.Add(new Subject() { SubjectId = Guid.NewGuid(), Complexity = Complexity.Starter, Name = "Вокруг света", Rate = null, TestAmount = tests.Count, Tests = tests });
 

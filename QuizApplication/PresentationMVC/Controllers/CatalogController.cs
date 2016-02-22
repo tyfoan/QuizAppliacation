@@ -27,6 +27,7 @@ namespace PresentationMVC.Controllers
 
         public ActionResult List()
         {
+            Mapper.CreateMap<ThemeDTO, Theme>();
             Mapper.CreateMap<TestDTO, Test>();
             Mapper.CreateMap<QuestionDTO, Question>();
             Mapper.CreateMap<AnswerDTO, Answer>();
@@ -40,6 +41,7 @@ namespace PresentationMVC.Controllers
         
         public ActionResult AboutTest(Guid testId)
         {
+            Mapper.CreateMap<ThemeDTO, Theme>();
             Mapper.CreateMap<TestDTO, Test>();
             Test test = Mapper.Map<TestDTO, Test>(service.Get(testId));
             return View(test);

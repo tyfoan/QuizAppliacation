@@ -18,11 +18,23 @@ namespace DAL.Repositories
         private TestRepository testRep;
         private UserRepository userRep;
         private SubjectRepository subjectRep;
+        private ThemeRepository themeRep;
+
         public EFUnitOfWork()
         {
             db = new QuizContext();
         }
 
+
+        public IRepository<Theme> Themes
+        {
+            get
+            {
+                if (themeRep == null)
+                    themeRep = new ThemeRepository(db);
+                return themeRep;
+            }
+        }
 
         public IRepository<Answer> Answers
         {

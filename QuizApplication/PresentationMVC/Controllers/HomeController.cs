@@ -21,6 +21,7 @@ namespace PresentationMVC.Controllers
 
         public ActionResult Index()
         {
+            Mapper.CreateMap<ThemeDTO, Theme>();
             Mapper.CreateMap<TestDTO, Test>();
             Mapper.CreateMap<QuestionDTO, Question>();
             Mapper.CreateMap<AnswerDTO, Answer>();

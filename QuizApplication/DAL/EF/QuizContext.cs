@@ -17,7 +17,7 @@ namespace DAL.EF
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Theme> Themes { get; set; }
         public QuizContext()
             : base("QuizDB")
         {
