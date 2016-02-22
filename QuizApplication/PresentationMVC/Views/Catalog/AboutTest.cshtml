@@ -59,9 +59,21 @@
         <div class="topic">
             @item.Name
         </div>
-
     }
+    <div hidden="hidden">Для прохождения теста необходимо пройти регистрацию или войти в аккаунт</div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "List")
-</p>
+
+
+@{
+    //TODO: Убрать подчеркивание под ссылками у кнопок.
+}
+<div class="buttons" id="left">
+        <a href="@Url.Action("List", "Catalog")">
+            <button type="button" class="btn btn-default btn-block">Назад</button>
+        </a>
+</div>
+<div class="buttons" id="right">
+    <a href="#">
+        <button type="button" class="btn btn-primary btn-block">Пройти тест</button>
+    </a>
+</div>
