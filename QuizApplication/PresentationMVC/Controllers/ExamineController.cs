@@ -30,10 +30,19 @@ namespace PresentationMVC.Controllers
             Mapper.CreateMap<TestDTO, Test>();
             Test test = Mapper.Map<TestDTO, Test>(_service.Get(testId));
             List<Question> questions = test.Questions;
+            foreach (var item in questions)
+            {
+                item.AnswerVariant = item.Answers.Count(a => a.IsTrue) > 1 ?  AnswerVarian.MoreThanOne : AnswerVarian.One;
+            }
 
             return View(questions);
         }
+        [HttpPost]
+        public ActionResult Testing(List<Question> tests)
+        {
 
+            return View("EndtTest");
+        }
         public ActionResult EndTest()
         {
             return View();

@@ -26,13 +26,14 @@ textarea {
 
 /* My styles */
 .panel-heading a:after {
-    font-family:'Glyphicons Halflings';
-    content:"\e114";
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
     float: right;
     color: grey;
 }
+
 .panel-heading a.collapsed:after {
-    content:"\e080";
+    content: "\e080";
 }
 
 #image {
@@ -40,7 +41,7 @@ textarea {
     width: 100%;
     background: url('Images/Screenshot_13.png');
     background-size: 100% 100%;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
 
 .topic {
@@ -59,21 +60,34 @@ textarea {
 a {
     text-decoration: none;
 }
-.buttons{
+
+.buttons {
     width: 209px;
     height: 34px;
 }
 
-#left{
+#left {
     float: left;
 }
-#right{
+
+#right {
     float: right;
 }
-.hr{
-    margin-top:80px;
+
+.hr {
+    margin-top: 80px;
 }
 
-.Testing li{
+.Testing li {
     list-style-type: none;
+}
+
+
+/*Запрет на копирование текста вопросов*/
+.protected {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }

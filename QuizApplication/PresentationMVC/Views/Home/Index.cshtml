@@ -8,7 +8,6 @@
     <h1>Quiz application</h1>
     <p class="lead">Проверьте свои знания</p>
     <p><a href="@Url.Action("List", "Catalog")" class="btn btn-primary btn-lg">Пройти тестирование  &raquo;</a></p>
-
 </div>
 
 <div class="row">
@@ -40,7 +39,7 @@
                     <td>
                         @foreach (var nestItem in item.Tests)
                         {
-                            @Html.DisplayFor(modelItem => nestItem.Name);
+                            @Html.DisplayFor(modelItem => nestItem.Name);<br />
                         }
                     </td>
                 </tr>

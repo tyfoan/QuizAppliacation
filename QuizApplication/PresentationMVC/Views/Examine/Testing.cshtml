@@ -1,29 +1,40 @@
-﻿@model IEnumerable<PresentationMVC.Models.ViewModels.Question>
-
+﻿@using PresentationMVC.Models.ViewModels
+@model IEnumerable<PresentationMVC.Models.ViewModels.Question>
 @{
     ViewBag.Title = "Testing";
 }
+
 
 <h2>Testing</h2>
 <div>
     @using (Html.BeginForm())
     {
-    int radio = 0;
-    foreach (var item in Model)
-    {
-    <h4>@item.QuestionContent</h4>
-    <hr />
-    <ul class="Testing">
-        @foreach (var innerItem in item.Answers)
+
+        foreach (var item in Model)
         {
-        <li>
-            <label><input type="radio" name="name @radio" value="" /> @innerItem.ContentAnswer </label>
-        </li>
+            <h4 class="protected">@item.QuestionContent</h4>
+            <hr />
+            <ul class="Testing">
+                @foreach (var innerItem in item.Answers)
+                {
+                    <li>
+                        @if (item.AnswerVariant == AnswerVarian.One)
+                        {
+                            @Html.RadioButton(item.QuestionId.ToString(), @innerItem.ContentAnswer)
+                        }
+                        else
+                        {
+                            @Html.CheckBox(item.QuestionId.ToString(), false)
+                        }
+                        <span class="protected">@innerItem.ContentAnswer</span> <br />
+                    </li>
+                }
+            </ul>
         }
-    </ul>
-    radio += 1;
-    }
-    <input type="submit" class="btn btn-success" value="Закончить тест">
+
+
+
+        <input type="submit" class="btn btn-success" value="Закончить тест">
     }
 </div>
 <p>
