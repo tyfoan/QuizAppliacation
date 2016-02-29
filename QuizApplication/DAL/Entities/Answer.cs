@@ -16,5 +16,6 @@ namespace DAL.Entities
 
 
         public virtual Question Question { get; set; }
+        public virtual ICollection<StudentAnswer> StudentAnswers { get; set; }
     }
 }

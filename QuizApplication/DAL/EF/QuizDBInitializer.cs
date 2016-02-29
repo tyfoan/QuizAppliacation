@@ -69,28 +69,28 @@ namespace DAL.EF
             List<Answer> answers_q1 = new List<Answer>() 
             {
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Сергей", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0]},
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
 
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О гражданской войне в России", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[1] },
 
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "За два забирай", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "За два забирай", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Все по 3", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[2] },
 
 
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Сергей", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3]},
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3] },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Александр", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[3] },
 
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О реке", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О малчаливых испанцах", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "О гражданской войне в России", StudentsAnswer = "", TrueAnswer = "О малчаливых испанцах", Question = questions[4] },
 
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "За два забирай", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
-                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = false, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "За два забирай", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
+                new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "По фиг", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] },
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Все по 3", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] }
 
             };

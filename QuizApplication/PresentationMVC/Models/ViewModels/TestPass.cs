@@ -17,5 +17,6 @@ namespace PresentationMVC.Models.ViewModels
 
         public Test Test { get; set; }
         public User User { get; set; }
+        public List<Question> Questions { get; set; } 
     }
 }

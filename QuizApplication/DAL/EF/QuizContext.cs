@@ -12,6 +12,7 @@ namespace DAL.EF
     public class QuizContext : DbContext
     {
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<StudentAnswer> StudentAnswers { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Subject> Subjects { get; set; }

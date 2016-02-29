@@ -12,5 +12,6 @@ namespace BLL.Interfaces
         TestDTO Get(Guid id);
         IEnumerable<SubjectDTO> GetAll();
         void Dispose();
+        void AddStudentAnswer(StudentAnswerDTO studentAnswer);
     }
 }

@@ -12,17 +12,18 @@ namespace DAL.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private QuizContext db;
-        private AnswerRepository answerRep;
-        private QuestionRepository questionRep;
-        private TestRepository testRep;
-        private UserRepository userRep;
-        private SubjectRepository subjectRep;
-        private ThemeRepository themeRep;
+        private QuizContext _db;
+        private AnswerRepository _answerRep;
+        private QuestionRepository _questionRep;
+        private TestRepository _testRep;
+        private UserRepository _userRep;
+        private SubjectRepository _subjectRep;
+        private ThemeRepository _themeRep;
+        private StudentAnswerRepository _studentAnswerRep;
 
         public EFUnitOfWork()
         {
-            db = new QuizContext();
+            _db = new QuizContext();
         }
 
 
@@ -30,9 +31,9 @@ namespace DAL.Repositories
         {
             get
             {
-                if (themeRep == null)
-                    themeRep = new ThemeRepository(db);
-                return themeRep;
+                if (_themeRep == null)
+                    _themeRep = new ThemeRepository(_db);
+                return _themeRep;
             }
         }
 
@@ -40,9 +41,9 @@ namespace DAL.Repositories
         {
             get 
             {
-                if (answerRep == null)
-                    answerRep = new AnswerRepository(db);
-                return answerRep;
+                if (_answerRep == null)
+                    _answerRep = new AnswerRepository(_db);
+                return _answerRep;
             }
         }
 
@@ -50,9 +51,9 @@ namespace DAL.Repositories
         {
             get 
             {
-                if (questionRep == null)
-                    questionRep = new QuestionRepository(db);
-                return questionRep;
+                if (_questionRep == null)
+                    _questionRep = new QuestionRepository(_db);
+                return _questionRep;
 
             }
         }
@@ -61,9 +62,9 @@ namespace DAL.Repositories
         {
             get
             {
-                if (subjectRep == null)
-                    subjectRep = new SubjectRepository(db);
-                return subjectRep;
+                if (_subjectRep == null)
+                    _subjectRep = new SubjectRepository(_db);
+                return _subjectRep;
             }
         }
 
@@ -71,9 +72,9 @@ namespace DAL.Repositories
         {
             get
             {
-                if (testRep == null)
-                    testRep = new TestRepository(db);
-                return testRep;
+                if (_testRep == null)
+                    _testRep = new TestRepository(_db);
+                return _testRep;
             }
         }
 
@@ -81,26 +82,19 @@ namespace DAL.Repositories
         {
             get
             {
-                if (userRep == null)
-                    userRep = new UserRepository(db);
-                return userRep;
+                if (_userRep == null)
+                    _userRep = new UserRepository(_db);
+                return _userRep;
             }
-        }
+        }      
 
-        public void Save()
+        public IRepository<StudentAnswer> StudentAnswers
         {
-            db.SaveChanges();
-        }
-        private bool disposed = false;
-        public void Dispose(bool disposing)
-        {
-            if (!this.disposed)
+            get
             {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-                this.disposed = true;
+                if (_studentAnswerRep == null)
+                    _studentAnswerRep = new StudentAnswerRepository(_db);
+                return _studentAnswerRep;
             }
         }
 
@@ -109,5 +103,24 @@ namespace DAL.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+
+        public void Save()
+        {
+            _db.SaveChanges();
+        }
+        private bool _disposed = false;
+        public void Dispose(bool disposing)
+        {
+            if (!this._disposed)
+            {
+                if (disposing)
+                {
+                    _db.Dispose();
+                }
+                this._disposed = true;
+            }
+        }
+
     }
 }

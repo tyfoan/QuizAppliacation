@@ -55,5 +55,18 @@ namespace BLL.Services
             Mapper.CreateMap<Test, TestDTO>();
             return Mapper.Map<Test, TestDTO>(Database.Tests.Get(id));
         }
+
+
+        public void AddStudentAnswer(StudentAnswerDTO studentAnswer)
+        {
+            StudentAnswer answer = new StudentAnswer()
+            {
+                StudentAnswerId = studentAnswer.StudentAnswerId,
+                Answer = Database.Answers.Get(studentAnswer.AnswerId),
+                Question = Database.Questions.Get(studentAnswer.QuestionId),
+                User = Database.Users.Get(studentAnswer.UserId)
+            };
+            Database.StudentAnswers.Create(answer);
+        }
     }
 }

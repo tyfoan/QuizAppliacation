@@ -1,7 +1,31 @@
-﻿
+﻿@model PresentationMVC.Models.ViewModels.TestPass
+
 @{
     ViewBag.Title = "EndTest";
 }
 
 <h2>EndTest</h2>
 
+
+<table class="table-condensed">
+    <tr>
+        @*<td>@Html.DisplayNameFor(m => m.User.Login)</td>
+        <td>@Model.User.Login</td>*@
+    </tr>
+    <tr>
+        @*<td>@Html.DisplayNameFor(m => m.Test.Name)</td>
+        <td>@Model.Test.Name</td>*@
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Score)</td>
+        <td>@Model.Score</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Time)</td>
+        <td>@Model.Time</td>
+    </tr>
+
+
+
+</table>

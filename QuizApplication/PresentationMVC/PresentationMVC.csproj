@@ -121,6 +121,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -193,6 +194,7 @@
     <Compile Include="Models\ViewModels\Answer.cs" />
     <Compile Include="Models\ViewModels\Question.cs" />
     <Compile Include="Models\ViewModels\Role.cs" />
+    <Compile Include="Models\ViewModels\StudentAnswer.cs" />
     <Compile Include="Models\ViewModels\Subject.cs" />
     <Compile Include="Models\ViewModels\Test.cs" />
     <Compile Include="Models\ViewModels\TestPass.cs" />

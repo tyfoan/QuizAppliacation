@@ -40,7 +40,7 @@ namespace DAL.Repositories
         public void Delete(Guid id)
         {
             User user = db.Users.Find(id);
-            if (user == null)
+            if (user != null)
             {
                 db.Users.Remove(user);
             }

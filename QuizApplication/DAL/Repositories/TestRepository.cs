@@ -41,7 +41,7 @@ namespace DAL.Repositories
         public void Delete(Guid id)
         {
             Test test = db.Tests.Find(id);
-            if (test ==null)
+            if (test != null)
             {
                 db.Tests.Remove(test);
             }

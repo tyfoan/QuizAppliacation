@@ -41,7 +41,7 @@ namespace DAL.Repositories
         public void Delete(Guid id)
         {
             Subject subj = db.Subjects.Find(id);
-            if (subj == null)
+            if (subj != null)
             {
                 db.Subjects.Remove(subj);
             }

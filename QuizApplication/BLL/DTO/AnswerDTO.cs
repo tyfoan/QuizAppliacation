@@ -13,5 +13,6 @@ namespace BLL.DTO
         public string ContentAnswer { get; set; }
         public string TrueAnswer { get; set; }
         public string StudentsAnswer { get; set; }
+        public List<StudentAnswerDTO> StudentAnswers { get; set; }
     }
 }

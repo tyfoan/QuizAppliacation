@@ -15,6 +15,7 @@ namespace DAL.Interfaces
         //IRepository<Role> Roles { get; }
         IRepository<Test> Tests { get; }
         IRepository<User> Users { get; }
+        IRepository<StudentAnswer> StudentAnswers { get; }
         //IRepository<TestPass> TestPasses { get; }
         void Save();
     }

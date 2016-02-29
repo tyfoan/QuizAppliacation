@@ -40,7 +40,7 @@ namespace DAL.Repositories
         public void Delete(Guid id)
         {
             Theme theme = db.Themes.Find(id);
-            if (theme == null)
+            if (theme != null)
             {
                 db.Themes.Remove(theme);
             }

@@ -40,7 +40,7 @@ namespace DAL.Repositories
         public void Delete(Guid id)
         {
             Answer answer = db.Answers.Find(id);
-            if (answer == null)
+            if (answer != null)
             {
                 db.Answers.Remove(answer);
             }

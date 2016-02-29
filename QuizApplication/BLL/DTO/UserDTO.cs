@@ -23,6 +23,7 @@ namespace BLL.DTO
 
         public List<SubjectDTO> Subjects { get; set; }
         public List<TestPassDTO> TestPasses { get; set; }
+        public List<StudentAnswerDTO> StudentAnswers { get; set; }
 
     }
 }

@@ -10,6 +10,6 @@ namespace BLL.DTO
     {
         public Guid RoleId { get; set; }
         public string Name { get; set; }
-        public IList<UserDTO> Users { get; set; }
+        public List<UserDTO> Users { get; set; }
     }
 }

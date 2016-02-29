@@ -24,5 +24,6 @@ namespace DAL.Entities
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Subject> Subjects { get; set; }
         public virtual ICollection<TestPass> TestPasses { get; set; }
+        public virtual ICollection<StudentAnswer> StudentAnswers { get; set; }
     }
 }
