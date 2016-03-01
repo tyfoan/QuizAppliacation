@@ -1,5 +1,5 @@
 ﻿@using PresentationMVC.Models.ViewModels
-@model IList<PresentationMVC.Models.ViewModels.Question>
+@model Test
 @{
     ViewBag.Title = "Testing";
 }
@@ -10,37 +10,37 @@
     @using (Html.BeginForm("EndTest", "Examine", FormMethod.Post))
     {
         @Html.AntiForgeryToken();
-        for (int i = 0; i < Model.Count(); i++)
-        {
-            <h4 class="protected">@Model[i].QuestionContent</h4>
-            <hr />
-            <ul class="Testing">
-                @for (int j = 0; j < Model[i].Answers.Count(); j++)
-                {
-                    <li>
-                        @if (Model[i].AnswerVariant == AnswerVarian.One)
-                        {
-                            @Html.RadioButtonFor(m => m[i].ChoosenAnswerGuid, Model[i].Answers[j].AnswerId)
-                            @Html.HiddenFor(m => m[i].Answers[j].IsTrue)
-                            @Html.HiddenFor(m => m[i].QuestionId)
-                        }
-                        else
-                        {
-                            @Html.CheckBoxFor(x => x[i].Answers[j].IsAnswered, false)
-                            @Html.HiddenFor(x=>x[i].Answers[j].IsTrue)
-                            @Html.HiddenFor(x => x[i].Answers[j].AnswerId)
-                        }
-                        <span class="protected">@Model[i].Answers[j].ContentAnswer</span> <br />
-                    </li>
-                }
-            </ul>
-        }
-        <input type="submit" class="btn btn-success" value="Закончить тест">
+                                for (int i = 0; i < Model.Questions.Count; i++)
+                                {
+                                    <h4 class="protected">@Model.Questions[i].QuestionContent</h4>
+                                    <hr />
+                                    <ul class="Testing">
+                                        @for (int j = 0; j < Model.Questions[i].Answers.Count(); j++)
+                                        {
+                                            @Html.HiddenFor(x => x.Questions[i].Answers[j].IsTrue)
+                                            @Html.HiddenFor(x => x.Duration)
+                                            @Html.HiddenFor(x => x.Name)
+                                            <li>
+                                                @if (Model.Questions[i].AnswerVariant == AnswerVarian.One)
+                                                {
+                                                    @Html.RadioButtonFor(m => m.Questions[i].ChoosenAnswerGuid, Model.Questions[i].Answers[j].AnswerId)
+                                                }
+                                                else
+                                                {
+                                                    @Html.CheckBoxFor(x => x.Questions[i].Answers[j].IsAnswered, false)
+                                                    @Html.HiddenFor(x => x.Questions[i].Answers[j].AnswerId)
+                                                }
+                                                <span class="protected">@Model.Questions[i].Answers[j].ContentAnswer</span> <br />
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                <input type="submit" class="btn btn-success" value="Закончить тест">
     }
+
 </div>
 <p>
     @{
-    //TODO: обработку на пустые radiobutton/checkbox
     //TODO: защита от дурака. предварительный выход из тестов. -1 попытка.
     //TODO: добавить таймер
     }

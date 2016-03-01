@@ -29,35 +29,37 @@ namespace PresentationMVC.Controllers
             //Mapper.CreateMap<ThemeDTO, Theme>();
             Mapper.CreateMap<TestDTO, Test>();
             Test test = Mapper.Map<TestDTO, Test>(_service.Get(testId));
-            List<Question> questions = test.Questions;
 
-            foreach (var item in questions)
+            //List<Question> questions = test.Questions;
+
+            foreach (var item in test.Questions)
                 if (item != null)
                     item.AnswerVariant = item.Answers.Count(a => a.IsTrue) > 1 ? AnswerVarian.MoreThanOne : AnswerVarian.One;
 
-            return View(questions);
+            //return View(questions);
+            return View(test);
         }
 
 
         [HttpPost]
-        public ActionResult EndTest(List<Question> questions) //questions=null
+        public ActionResult EndTest(Test test) //questions=null
         {
-            TestPass testPass = new TestPass();
 
-            int count = questions.Count;
 
-            foreach (var question in questions)
+            int count = test.Questions.Count;
+
+
+            foreach (var question in test.Questions)
             {
                 foreach (var answer in question.Answers)
                 {
                     _service.AddStudentAnswer(new StudentAnswerDTO()
                     {
+                        StudentAnswerId = Guid.NewGuid(),
                         AnswerId = answer.AnswerId,
                         QuestionId = question.QuestionId,
                         //UserId = User.UserId TODO:Добавить юзера.
                     });
-
-
                     if (answer.IsTrue == answer.IsAnswered)
                     {
                         continue;
@@ -69,10 +71,16 @@ namespace PresentationMVC.Controllers
                     }
                 }
             }
-            testPass.Score = count;
-            testPass.Time = DateTime.Now; //Время прохождения.
-            
-            
+
+            TestPass testPass = new TestPass()
+            {
+                TestPassId = Guid.NewGuid(),
+                Test = test,
+                Score = count
+                //User = Test.User;
+            };
+
+
 
             return View(testPass);
         }

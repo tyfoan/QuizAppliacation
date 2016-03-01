@@ -4,28 +4,24 @@
     ViewBag.Title = "EndTest";
 }
 
-<h2>EndTest</h2>
+<h2>@Model.Test.Name</h2>
 
 
 <table class="table-condensed">
     <tr>
-        @*<td>@Html.DisplayNameFor(m => m.User.Login)</td>
-        <td>@Model.User.Login</td>*@
+        <td>Кандидат: </td>
+        <td>USER КАКОЙ_ТО</td>
     </tr>
     <tr>
-        @*<td>@Html.DisplayNameFor(m => m.Test.Name)</td>
-        <td>@Model.Test.Name</td>*@
+        <td>@Html.DisplayNameFor(m => m.Test.Duration)</td>
+        <td>@Model.Test.Duration</td>
     </tr>
     <tr>
         <td>@Html.DisplayNameFor(m => m.Score)</td>
         <td>@Model.Score</td>
     </tr>
-
     <tr>
         <td>@Html.DisplayNameFor(m => m.Time)</td>
         <td>@Model.Time</td>
     </tr>
-
-
-
 </table>
