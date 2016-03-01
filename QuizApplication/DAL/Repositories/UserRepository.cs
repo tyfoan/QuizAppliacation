@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class UserRepository: IRepository<User>
+    class UserRepository: IRepository<ApplicationUser>
     {
         private QuizContext db;
         public UserRepository(QuizContext context)
@@ -17,29 +17,29 @@ namespace DAL.Repositories
             this.db = context;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<ApplicationUser> GetAll()
         {
             return db.Users;
         }
 
-        public User Get(Guid id)
+        public ApplicationUser Get(Guid id)
         {
             return db.Users.Find(id);
         }
 
-        public void Create(User item)
+        public void Create(ApplicationUser item)
         {
             db.Users.Add(item);
         }
 
-        public void Update(User item)
+        public void Update(ApplicationUser item)
         {
             db.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
         public void Delete(Guid id)
         {
-            User user = db.Users.Find(id);
+            ApplicationUser user = db.Users.Find(id);
             if (user != null)
             {
                 db.Users.Remove(user);

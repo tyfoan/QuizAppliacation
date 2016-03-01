@@ -13,7 +13,7 @@ namespace BLL.Infrastructure
     {
         public override void Load()
         {
-            Bind<IUnitOfWork>().To<EFUnitOfWork>();
+            Bind<IUnitOfWork>().To<EfUnitOfWork>();
         }
     }
 }

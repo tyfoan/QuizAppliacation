@@ -44,10 +44,7 @@ namespace PresentationMVC.Controllers
         [HttpPost]
         public ActionResult EndTest(Test test) //questions=null
         {
-
-
             int count = test.Questions.Count;
-
 
             foreach (var question in test.Questions)
             {

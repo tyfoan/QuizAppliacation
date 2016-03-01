@@ -64,7 +64,7 @@ namespace BLL.Services
                 StudentAnswerId = studentAnswer.StudentAnswerId,
                 Answer = Database.Answers.Get(studentAnswer.AnswerId),
                 Question = Database.Questions.Get(studentAnswer.QuestionId),
-                User = Database.Users.Get(studentAnswer.UserId)
+                //User = Database.Users.Get(studentAnswer.UserId) ?? why error?
             };
             Database.StudentAnswers.Create(answer);
         }

@@ -11,6 +11,6 @@ namespace DAL.Entities
         public Guid StudentAnswerId { get; set; }
         public virtual Answer Answer { get; set; }
         public virtual Question Question { get; set; }
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

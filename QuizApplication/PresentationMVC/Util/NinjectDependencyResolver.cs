@@ -21,6 +21,7 @@ namespace PresentationMVC.Util
         private void AddBindings()
         {
             kernel.Bind<IBaseQuizService>().To<QuizService>();
+            kernel.Bind<IUserService>().To<UserService>();
         }
         public object GetService(Type serviceType)
         {

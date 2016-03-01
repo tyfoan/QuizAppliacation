@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAL.EF
 {
-    class QuizDBInitializer : DropCreateDatabaseAlways<QuizContext>
+    class QuizDBInitializer : DropCreateDatabaseIfModelChanges<QuizContext>
     {
         protected override void Seed(QuizContext context)
         {

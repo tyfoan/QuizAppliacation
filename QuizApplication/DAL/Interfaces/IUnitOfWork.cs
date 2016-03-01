@@ -1,9 +1,7 @@
 ﻿using DAL.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using DAL.Identity;
 
 namespace DAL.Interfaces
 {
@@ -12,11 +10,14 @@ namespace DAL.Interfaces
         IRepository<Answer> Answers { get; }
         IRepository<Question> Questions { get; }
         IRepository<Subject> Subjects { get; }
-        //IRepository<Role> Roles { get; }
         IRepository<Test> Tests { get; }
-        IRepository<User> Users { get; }
         IRepository<StudentAnswer> StudentAnswers { get; }
-        //IRepository<TestPass> TestPasses { get; }
         void Save();
+
+
+        ApplicationUserManager UserManager { get; }
+        IClientManager ClientManager { get; }
+        ApplicationRoleManager RoleManager { get; }
+        Task SaveAsync();
     }
 }

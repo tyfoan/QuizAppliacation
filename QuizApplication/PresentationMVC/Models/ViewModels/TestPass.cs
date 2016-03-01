@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BLL.DTO;
 
 namespace PresentationMVC.Models.ViewModels
 {
@@ -16,7 +17,7 @@ namespace PresentationMVC.Models.ViewModels
 
 
         public Test Test { get; set; }
-        public User User { get; set; }
+        public UserDTO User { get; set; }
         public List<Question> Questions { get; set; } 
     }
 }

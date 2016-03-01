@@ -18,6 +18,6 @@ namespace DAL.Entities
 
 
         public virtual ICollection<Test> Tests { get; set; }       
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

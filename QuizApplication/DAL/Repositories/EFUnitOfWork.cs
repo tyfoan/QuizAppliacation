@@ -1,29 +1,34 @@
 ﻿using DAL.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
-using DAL.Repositories;
 using DAL.EF;
+using DAL.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using DAL.Repositories.Auth;
 
 namespace DAL.Repositories
 {
-    public class EFUnitOfWork : IUnitOfWork
+    public class EfUnitOfWork : IUnitOfWork
     {
-        private QuizContext _db;
+        private readonly QuizContext _db;
         private AnswerRepository _answerRep;
         private QuestionRepository _questionRep;
         private TestRepository _testRep;
-        private UserRepository _userRep;
         private SubjectRepository _subjectRep;
         private ThemeRepository _themeRep;
         private StudentAnswerRepository _studentAnswerRep;
 
-        public EFUnitOfWork()
+        private readonly ApplicationUserManager _userManager;
+        private readonly ApplicationRoleManager _roleManager;
+        private readonly IClientManager _clientManager;
+
+        public EfUnitOfWork()
         {
             _db = new QuizContext();
+            _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_db));
+            _roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_db));
+            _clientManager = new ClientManager(_db);
         }
 
 
@@ -77,16 +82,7 @@ namespace DAL.Repositories
                 return _testRep;
             }
         }
-
-        public IRepository<User> Users
-        {
-            get
-            {
-                if (_userRep == null)
-                    _userRep = new UserRepository(_db);
-                return _userRep;
-            }
-        }      
+    
 
         public IRepository<StudentAnswer> StudentAnswers
         {
@@ -109,18 +105,41 @@ namespace DAL.Repositories
         {
             _db.SaveChanges();
         }
-        private bool _disposed = false;
-        public void Dispose(bool disposing)
+        private bool _disposed;
+        public virtual void Dispose(bool disposing)
         {
-            if (!this._disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
+                    _userManager.Dispose();
+                    _roleManager.Dispose();
+                    _clientManager.Dispose();
                     _db.Dispose();
                 }
-                this._disposed = true;
+                _disposed = true;
             }
         }
 
+
+        public ApplicationUserManager UserManager
+        {
+            get { return _userManager; }
+        }
+
+        public IClientManager ClientManager
+        {
+            get { return _clientManager; }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get { return _roleManager; }
+        }
+
+        public async Task SaveAsync()
+        {
+            await _db.SaveChangesAsync();
+        }
     }
 }
