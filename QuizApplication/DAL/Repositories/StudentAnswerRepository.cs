@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.EF;
 using DAL.Entities;
 using DAL.Interfaces;
@@ -13,11 +8,11 @@ namespace DAL.Repositories
 {
     public class StudentAnswerRepository : IRepository<StudentAnswer>
     {
-        private QuizContext _db;
+        private readonly QuizContext _db;
 
         public StudentAnswerRepository(QuizContext db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public IEnumerable<StudentAnswer> GetAll()

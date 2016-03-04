@@ -3,46 +3,43 @@ using DAL.Entities;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class UserRepository: IRepository<ApplicationUser>
+    class UserRepository: IRepository<User>
     {
-        private QuizContext db;
+        private readonly QuizContext _db;
         public UserRepository(QuizContext context)
         {
-            this.db = context;
+            _db = context;
         }
 
-        public IEnumerable<ApplicationUser> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return db.Users;
+            return _db.Users;
         }
 
-        public ApplicationUser Get(Guid id)
+        public User Get(Guid id)
         {
-            return db.Users.Find(id);
+            return _db.Users.Find(id);
         }
 
-        public void Create(ApplicationUser item)
+        public void Create(User item)
         {
-            db.Users.Add(item);
+            _db.Users.Add(item);
         }
 
-        public void Update(ApplicationUser item)
+        public void Update(User item)
         {
-            db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            _db.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
         public void Delete(Guid id)
         {
-            ApplicationUser user = db.Users.Find(id);
+            User user = _db.Users.Find(id);
             if (user != null)
             {
-                db.Users.Remove(user);
+                _db.Users.Remove(user);
             }
         }
     }

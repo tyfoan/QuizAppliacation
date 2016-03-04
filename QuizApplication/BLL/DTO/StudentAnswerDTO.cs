@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BLL.DTO
 {
-    public class StudentAnswerDTO
+    public class StudentAnswerDto
     {
         public Guid StudentAnswerId { get; set; }
         public Guid QuestionId { get; set; }

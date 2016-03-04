@@ -17,7 +17,7 @@ namespace PresentationMVC.Models.ViewModels
 
 
         public Test Test { get; set; }
-        public UserDTO User { get; set; }
+        //public UserDto User { get; set; }
         public List<Question> Questions { get; set; } 
     }
 }

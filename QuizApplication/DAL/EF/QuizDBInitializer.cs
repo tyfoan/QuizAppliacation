@@ -3,12 +3,10 @@ using Enums;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 
 namespace DAL.EF
 {
-    class QuizDBInitializer : DropCreateDatabaseIfModelChanges<QuizContext>
+    public class QuizDbInitializer : DropCreateDatabaseIfModelChanges<QuizContext>
     {
         protected override void Seed(QuizContext context)
         {
@@ -66,7 +64,7 @@ namespace DAL.EF
             questions.ForEach(s => context.Questions.Add(s));
 
 
-            List<Answer> answers_q1 = new List<Answer>() 
+            List<Answer> answersQ1 = new List<Answer>() 
             {
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Сергей", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0]},
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Константин", StudentsAnswer = "", TrueAnswer = "Сергей", Question = questions[0] },
@@ -94,7 +92,7 @@ namespace DAL.EF
                 new Answer() { AnswerId = Guid.NewGuid(), IsTrue = true, ContentAnswer= "Все по 3", StudentsAnswer = "", TrueAnswer = "За два забирай", Question = questions[5] }
 
             };
-            answers_q1.ForEach(s => context.Answers.Add(s));
+            answersQ1.ForEach(s => context.Answers.Add(s));
 
 
 

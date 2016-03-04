@@ -3,20 +3,18 @@ using BLL.DTO;
 using BLL.Interfaces;
 using PresentationMVC.Models.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PresentationMVC.Controllers
 {
     public class ExamineController : Controller
     {
-        IBaseQuizService _service;
+        readonly IBaseQuizService _service;
 
         public ExamineController(IBaseQuizService service)
         {
-            this._service = service;
+            _service = service;
         }
         // GET: Examine
         public ActionResult Index()
@@ -27,9 +25,10 @@ namespace PresentationMVC.Controllers
         public ActionResult Testing(Guid testId)
         {
             //Mapper.CreateMap<ThemeDTO, Theme>();
-            Mapper.CreateMap<TestDTO, Test>();
-            Test test = Mapper.Map<TestDTO, Test>(_service.Get(testId));
-
+#pragma warning disable 618
+            Mapper.CreateMap<TestDto, Test>();
+            Test test = Mapper.Map<TestDto, Test>(_service.Get(testId));
+#pragma warning restore 618
             //List<Question> questions = test.Questions;
 
             foreach (var item in test.Questions)
@@ -50,7 +49,7 @@ namespace PresentationMVC.Controllers
             {
                 foreach (var answer in question.Answers)
                 {
-                    _service.AddStudentAnswer(new StudentAnswerDTO()
+                    _service.AddStudentAnswer(new StudentAnswerDto()
                     {
                         StudentAnswerId = Guid.NewGuid(),
                         AnswerId = answer.AnswerId,
@@ -58,9 +57,7 @@ namespace PresentationMVC.Controllers
                         //UserId = User.UserId TODO:Добавить юзера.
                     });
                     if (answer.IsTrue == answer.IsAnswered)
-                    {
-                        continue;
-                    }
+                    { }
                     else
                     {
                         count -= 1;

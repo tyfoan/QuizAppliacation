@@ -2,10 +2,7 @@
 using BLL.DTO;
 using BLL.Interfaces;
 using PresentationMVC.Models.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PresentationMVC.Controllers
@@ -19,18 +16,20 @@ namespace PresentationMVC.Controllers
             this.service = service;
         }
 
+#pragma warning disable 618
         public ActionResult Index()
         {
-            Mapper.CreateMap<ThemeDTO, Theme>();
-            Mapper.CreateMap<TestDTO, Test>();
-            Mapper.CreateMap<QuestionDTO, Question>();
-            Mapper.CreateMap<AnswerDTO, Answer>();
+            Mapper.CreateMap<ThemeDto, Theme>();
+            Mapper.CreateMap<TestDto, Test>();
+            Mapper.CreateMap<QuestionDto, Question>();
+            Mapper.CreateMap<AnswerDto, Answer>();
 
             //Mapper.CreateMap<Subject, SubjectDTO>();
-            Mapper.CreateMap<SubjectDTO, Subject>();
-            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDTO>, List<Subject>>(service.GetAll());
+            Mapper.CreateMap<SubjectDto, Subject>();
+            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<Subject>>(service.GetAll());
             return View(subjects);
         }
+#pragma warning restore 618
 
         public ActionResult About()
         {

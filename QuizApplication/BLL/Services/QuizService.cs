@@ -5,18 +5,16 @@ using DAL.Entities;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
     public class QuizService : IBaseQuizService
     {
-        IUnitOfWork Database { get; set; }
+        private readonly IUnitOfWork _database;
         public QuizService(IUnitOfWork uow)
         {
-            Database = uow;
+            _database = uow;
+            //var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDto>());
         }
 
 
@@ -31,42 +29,39 @@ namespace BLL.Services
 
         public void Dispose()
         {
-            Database.Dispose();
+            _database.Dispose();
         }
 
-        public IEnumerable<SubjectDTO> GetAll()
+
+#pragma warning disable 618
+        public IEnumerable<SubjectDto> GetAll()
         {
-
-            Mapper.CreateMap<Theme, ThemeDTO>();
-            Mapper.CreateMap<Test, TestDTO>();
-            Mapper.CreateMap<Question, QuestionDTO>();
-            Mapper.CreateMap<Answer, AnswerDTO>();
-            //var xe = Mapper.Map<IEnumerable<Test>, List<TestDTO>>(Database.Tests.GetAll());
-
-            Mapper.CreateMap<Subject, SubjectDTO>();
-                //.ForMember(s => s.Tests, y => y.MapFrom(m => m.Tests = xe));
-            return Mapper.Map<IEnumerable<Subject>, List<SubjectDTO>>(Database.Subjects.GetAll());
-
+            Mapper.CreateMap<Theme, ThemeDto>();
+            Mapper.CreateMap<Test, TestDto>();
+            Mapper.CreateMap<Question, QuestionDto>();
+            Mapper.CreateMap<Answer, AnswerDto>();
+            Mapper.CreateMap<Subject, SubjectDto>();
+            return Mapper.Map<IEnumerable<Subject>, List<SubjectDto>>(_database.Subjects.GetAll());
         }
 
-        public TestDTO Get(Guid id)
+        public TestDto Get(Guid id)
         {
-            Mapper.CreateMap<Theme, ThemeDTO>();
-            Mapper.CreateMap<Test, TestDTO>();
-            return Mapper.Map<Test, TestDTO>(Database.Tests.Get(id));
+            Mapper.CreateMap<Theme, ThemeDto>();
+            Mapper.CreateMap<Test, TestDto>();
+            return Mapper.Map<Test, TestDto>(_database.Tests.Get(id));
         }
+#pragma warning restore 618
 
-
-        public void AddStudentAnswer(StudentAnswerDTO studentAnswer)
+        public void AddStudentAnswer(StudentAnswerDto studentAnswer)
         {
             StudentAnswer answer = new StudentAnswer()
             {
                 StudentAnswerId = studentAnswer.StudentAnswerId,
-                Answer = Database.Answers.Get(studentAnswer.AnswerId),
-                Question = Database.Questions.Get(studentAnswer.QuestionId),
+                Answer = _database.Answers.Get(studentAnswer.AnswerId),
+                Question = _database.Questions.Get(studentAnswer.QuestionId),
                 //User = Database.Users.Get(studentAnswer.UserId) ?? why error?
             };
-            Database.StudentAnswers.Create(answer);
+            _database.StudentAnswers.Create(answer);
         }
     }
 }

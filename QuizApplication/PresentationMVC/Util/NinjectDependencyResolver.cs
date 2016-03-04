@@ -11,26 +11,25 @@ namespace PresentationMVC.Util
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {
-        private IKernel kernel;
+        private readonly IKernel _kernel;
         public NinjectDependencyResolver(IKernel kernel)
         {
-            this.kernel = kernel;
+            this._kernel = kernel;
             AddBindings();
         }
 
         private void AddBindings()
         {
-            kernel.Bind<IBaseQuizService>().To<QuizService>();
-            kernel.Bind<IUserService>().To<UserService>();
+            _kernel.Bind<IBaseQuizService>().To<QuizService>();
         }
         public object GetService(Type serviceType)
         {
-            return kernel.TryGet(serviceType);
+            return _kernel.TryGet(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return kernel.GetAll(serviceType);
+            return _kernel.GetAll(serviceType);
         }
     }
 }

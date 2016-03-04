@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BLL.DTO
 {
-    public class TestPassDTO
+    public class TestPassDto
     {
         public Guid TestPassId { get; set; }
         public Guid UserId { get; set; }

@@ -1,13 +1,9 @@
-﻿using DAL.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    public class UserDTO
+    public class UserDto
     {
         public Guid UserId { get; set; }
         public string Email { get; set; }
@@ -24,9 +20,9 @@ namespace BLL.DTO
         
 
 
-        public List<SubjectDTO> Subjects { get; set; }
-        public List<TestPassDTO> TestPasses { get; set; }
-        public List<StudentAnswerDTO> StudentAnswers { get; set; }
+        public List<SubjectDto> Subjects { get; set; }
+        public List<TestPassDto> TestPasses { get; set; }
+        public List<StudentAnswerDto> StudentAnswers { get; set; }
 
     }
 }

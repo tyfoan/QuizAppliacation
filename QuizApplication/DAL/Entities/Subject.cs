@@ -1,10 +1,6 @@
 ﻿using Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
@@ -18,6 +14,6 @@ namespace DAL.Entities
 
 
         public virtual ICollection<Test> Tests { get; set; }       
-        public virtual ApplicationUser User { get; set; }
+        public virtual User User { get; set; }
     }
 }
