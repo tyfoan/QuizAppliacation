@@ -13,7 +13,7 @@ namespace PresentationMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            WebSecurity.InitializeDatabaseConnection("QuizDB", "UserProfile", "UserId", "Email", autoCreateTables: true);
+            WebSecurity.InitializeDatabaseConnection("QuizDB", "Users", "UserId", "Login", autoCreateTables: true);
         }
     }
 }

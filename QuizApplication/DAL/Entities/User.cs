@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Entities
 {
-    [Table("Users")]
     public class User
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public Guid UserId { get; set; }
+//        [Key]
+//        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int UserId { get; set; }
+        public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         //public DateTime AddedDate { get; set; }

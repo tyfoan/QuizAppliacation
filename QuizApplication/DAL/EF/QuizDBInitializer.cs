@@ -7,6 +7,7 @@ using System.Data.Entity;
 namespace DAL.EF
 {
     public class QuizDbInitializer : DropCreateDatabaseIfModelChanges<QuizContext>
+//    public class QuizDbInitializer : DropCreateDatabaseAlways<QuizContext>
     {
         protected override void Seed(QuizContext context)
         {

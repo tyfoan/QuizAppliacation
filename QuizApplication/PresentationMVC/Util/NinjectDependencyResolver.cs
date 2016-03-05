@@ -3,8 +3,6 @@ using BLL.Services;
 using Ninject;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PresentationMVC.Util
@@ -14,13 +12,14 @@ namespace PresentationMVC.Util
         private readonly IKernel _kernel;
         public NinjectDependencyResolver(IKernel kernel)
         {
-            this._kernel = kernel;
+            _kernel = kernel;
             AddBindings();
         }
 
         private void AddBindings()
         {
             _kernel.Bind<IBaseQuizService>().To<QuizService>();
+            _kernel.Bind<IAccountService>().To<AccountService>();
         }
         public object GetService(Type serviceType)
         {
