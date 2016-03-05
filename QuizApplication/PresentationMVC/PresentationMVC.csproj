@@ -155,6 +155,7 @@
     <Compile Include="Controllers\ExamineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,7 +193,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -216,13 +216,13 @@
     <Content Include="Views\Catalog\AboutTest.cshtml" />
     <Content Include="Views\Examine\Testing.cshtml" />
     <Content Include="Views\Examine\EndTest.cshtml" />
-    <Content Include="Views\Account\SuccessRegister.cshtml" />
     <Content Include="Views\Catalog\Index.cshtml" />
     <Content Include="Views\Examine\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register - Копировать.cshtml" />
     <Content Include="Views\Account\Login - Копировать.cshtml" />
     <Content Include="Views\Account\SuccessRegister - Копировать.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,9 +3,9 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
-using WebMatrix.WebData;
+using System.Web.Security;
 using PresentationMVC.Models;
-using DAL.EF;
+using WebMatrix.WebData;
 
 namespace PresentationMVC.Filters
 {
@@ -26,11 +26,12 @@ namespace PresentationMVC.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<QuizContext>(null);
+                Database.SetInitializer<UsersContext>(null);
+
 
                 try
                 {
-                    using (var context = new QuizContext())
+                    using (var context = new UsersContext())
                     {
                         if (!context.Database.Exists())
                         {
@@ -38,8 +39,35 @@ namespace PresentationMVC.Filters
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
+                    //WebSecurity.InitializeDatabaseConnection("QuizDB", "Users", "UserId", "Login", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("QuizDB", "Users", "UserId", "Email", autoCreateTables: true);
 
-                    WebSecurity.InitializeDatabaseConnection("QuizDB", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    SimpleRoleProvider roles = (SimpleRoleProvider)Roles.Provider;
+                    SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
+
+                    if (!roles.RoleExists("Admin"))
+                    {
+                        roles.CreateRole("Admin");
+                    }
+                    if (!roles.RoleExists("Manager"))
+                    {
+                        roles.CreateRole("Manager");
+                    }
+                    if (!roles.RoleExists("User"))
+                    {
+                        roles.CreateRole("User");
+                    }
+                    if (membership.GetUser("Admin@mail.ru", false) == null)
+                    {
+                        WebSecurity.CreateUserAndAccount("Admin@mail.ru", "123456");
+                        roles.AddUsersToRoles(new[] { "Admin@mail.ru" }, new[] { "Admin" });
+                    }
+                    if (membership.GetUser("Test@mail.ru", false) == null)
+                    {
+                        WebSecurity.CreateUserAndAccount("Test@mail.ru", "123456");
+                        roles.AddUsersToRoles(new[] { "Test@mail.ru" }, new[] { "User" });
+                    }
+
                 }
                 catch (Exception ex)
                 {

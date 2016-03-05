@@ -5,16 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Entities
 {
+    
     public class User
     {
-//        [Key]
-//        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string Email { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+
         //public DateTime AddedDate { get; set; }
         //public DateTime LastVisitDate { get; set; }
+
         public string AvatarPath { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

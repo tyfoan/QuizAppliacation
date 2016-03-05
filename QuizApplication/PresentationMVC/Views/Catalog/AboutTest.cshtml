@@ -64,15 +64,13 @@
 </div>
 
 
-@{
-    //TODO: Убрать подчеркивание под ссылками у кнопок.
-}
+
 <div class="buttons" id="left">
     <a href="@Url.Action("List", "Catalog")" class="btn btn-default btn-block">Назад</a>
 </div>
 
 <div class="buttons" id="right">
-    @*<button type="button" class="btn btn-primary btn-block">Пройти тест</button>*@
+
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Пройти тест</a>
 </div>
 
@@ -92,7 +90,6 @@
         <div class="modal-footer">
             <a class="btn btn-default" data-dismiss="modal">Назад</a>
             @{
-    //TODO: bad idea using buttons or not?
     //TODO: Появляется сбоку ползунок и двигает весь экран при появлении модального окна. Как убрать ползунок?
             }
 

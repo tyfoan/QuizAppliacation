@@ -1,50 +1,20 @@
-﻿@model PresentationMVC.Models.LoginModel
+﻿@using PresentationMVC.Models
+@model LoginModel
 
 @{
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<h2>Enter your credential please</h2>
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <fieldset>
-            <legend>Введите учетные данные</legend>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Войти" class="btn btn-success" />
-                </div>
-            </div>
-        </fieldset>
-    </div>
-}
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        @Html.ActionLink("Назад", "Index", "Home") |
-        @Html.ActionLink("Регистрация", "Register")
-    </div>
+<div>
+    @using (@Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <label>Enter username</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        <label>Enter password</label>
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+        <input type="submit" class="btn btn-success" value="Login">
+    }
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
