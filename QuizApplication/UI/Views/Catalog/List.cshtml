@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UI.Models.ViewModels.Subject>
+
+@{
+    ViewBag.Title = "Catalog";
+}
+<script language="JavaScript" type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+<h2>Catalog</h2>
+@{ int collapseIteration = 0; }
+@foreach (var item in Model)
+{
+
+    <div class="panel panel-default" id="panel1">
+
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-target="#@collapseIteration" href="#@collapseIteration"> @Html.DisplayFor(modelItem => item.Name) </a>
+            </h4>
+        </div>
+
+        <div id="@collapseIteration" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Время</th>
+                            <th>Сложность</th>
+                            <th>Количество вопросов</th>
+                            <th>Рейтинг</th>
+                            <th>Пройти тест</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var innerItem in item.Tests)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@innerItem.Name</td>
+                                <td>@{int x = innerItem.Duration / 60; } @x мин.</td>
+                                <td>@innerItem.Complexity</td>
+                                <td>@innerItem.Questions.Count</td>
+                                <td>@innerItem.Rate</td>
+                                <td>
+                                    @{
+                                      //TODO: Зачем передают ew { testId = innerItem.TestId, Subject = item.Name, Test = innerItem.Name } fix.
+                                    }
+                                    <a href="@Url.Action("AboutTest", "Catalog", new { testId = innerItem.TestId, Subject = item.Name, Test = innerItem.Name }, null)">
+                                        <button type="button" class="btn btn-primary">Пройти тест</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+        @{collapseIteration += 1; }
+    </div>
+
+}

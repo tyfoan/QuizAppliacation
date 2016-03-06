@@ -1,0 +1,19 @@
+﻿@model UI.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Enter your credential please</h2>
+
+<div>
+    @using (@Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <label>Enter username</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        <label>Enter password</label>
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+        <input type="submit" class="btn btn-success" value="Login">
+    }
+</div>

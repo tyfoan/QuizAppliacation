@@ -1,0 +1,50 @@
+﻿@using UI.Models.ViewModels
+@model Test
+@{
+    ViewBag.Title = "Testing";
+}
+
+
+<h2>Testing</h2>
+<div>
+    @using (Html.BeginForm("EndTest", "Examine", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+                                for (int i = 0; i < Model.Questions.Count; i++)
+                                {
+                                    <h4 class="protected">@Model.Questions[i].QuestionContent</h4>
+                                    <hr />
+                                    <ul class="Testing">
+                                        @for (int j = 0; j < Model.Questions[i].Answers.Count(); j++)
+                                        {
+                                            @Html.HiddenFor(x => x.Questions[i].Answers[j].IsTrue)
+                                            @Html.HiddenFor(x => x.Duration)
+                                            @Html.HiddenFor(x => x.Name)
+                                            <li>
+                                                @if (Model.Questions[i].AnswerVariant == AnswerVarian.One)
+                                                {
+                                                    @Html.RadioButtonFor(m => m.Questions[i].ChoosenAnswerGuid, Model.Questions[i].Answers[j].AnswerId)
+                                                }
+                                                else
+                                                {
+                                                    @Html.CheckBoxFor(x => x.Questions[i].Answers[j].IsAnswered, false)
+                                                    @Html.HiddenFor(x => x.Questions[i].Answers[j].AnswerId)
+                                                }
+                                                <span class="protected">@Model.Questions[i].Answers[j].ContentAnswer</span> <br />
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                <input type="submit" class="btn btn-success" value="Закончить тест">
+    }
+
+</div>
+<p>
+    @{
+    //TODO: защита от дурака. предварительный выход из тестов. -1 попытка.
+    //TODO: добавить таймер
+    }
+
+
+    @*@Html.ActionLink("Back to List", "List", "Catalog")*@
+</p>
