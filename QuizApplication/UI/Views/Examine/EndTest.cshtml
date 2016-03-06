@@ -9,8 +9,11 @@
 
 <table class="table-condensed">
     <tr>
-        <td>Кандидат: </td>
-        <td>USER КАКОЙ_ТО</td>
+        <td>Email: </td>
+        <td>@User.Identity.Name</td>
+        @{
+            //TODO: фио юзера
+        }
     </tr>
     <tr>
         <td>@Html.DisplayNameFor(m => m.Test.Duration)</td>

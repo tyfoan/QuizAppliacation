@@ -1,0 +1,79 @@
+﻿@model IEnumerable<UI.Models.ViewModels.UserViewModel>
+
+@{
+    ViewBag.Title = "TableUsers";
+}
+
+<h2>TableUsers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBlocked)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+        {
+
+            if (Roles.GetRolesForUser(item.Email)[0] != "Admin")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MiddleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td id="@(item.UserId)">
+                        @*@Html.DisplayFor(modelItem => item.IsBlocked)*@
+                        @if (item.IsBlocked)
+                        {
+                            @Html.Partial("_BlockButton", item.UserId)
+                        }
+                        else
+                        {
+                            @Html.Partial("_UnblockButton", item.UserId)
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+                        @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                    </td>
+                </tr>
+            }        
+        }
+            </table>
+            <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+

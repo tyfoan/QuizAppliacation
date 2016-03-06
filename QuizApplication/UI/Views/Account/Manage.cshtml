@@ -1,0 +1,125 @@
+﻿@model UI.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Аккаунт</h2>
+
+<div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Данные профиля</div>
+        <div class="panel-body">
+            <dl class="dl-horizontal col-md-6">
+                <dt>
+                    Логин пользователя
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt>
+                    ФИО
+                </dt>
+                <dd>
+                    @if (Model != null)
+                    {
+                        if (Model.FirstName != null && Model.LastName != null)
+                        {
+                            <span>@Model.FirstName @Model.LastName @Model.MiddleName</span>
+                        }
+                    }
+                </dd>
+            </dl>
+            <address class="col-md-6">
+                <strong>Контакты:</strong><br>
+                @Html.LabelFor(model=>model.Email)
+                @Html.DisplayFor(model => model.Email)<br>
+                @Html.LabelFor(model => model.Address)
+                @Html.DisplayFor(model => model.Address)
+            </address>
+        </div>
+    </div>
+</div>
+
+<p>@Html.ActionLink("Редактировать", "Edit", "Account")</p>
+<p>@Html.ActionLink("Смена пароля", "ChangePassword", "Account")</p>
+@*@if(User.IsInRole("User"))
+    {
+    <p>@Html.ActionLink("Пополнить баланс", "Balance")</p>
+    }*@
+<p> @Html.ActionLink("Вернуться на главную", "Index", "Home")</p>
+
+
+
+@*@model UI.Models.RegisterModel*@
+@**@
+@*@{*@
+@*    ViewBag.Title = "Manage";*@
+@*}*@
+@**@
+@*<h2>Manage</h2>*@
+@**@
+@*@using (Html.BeginForm())*@
+@*{*@
+@*    @Html.AntiForgeryToken()*@
+@*    *@
+@*    <div class="form-horizontal">*@
+@*        <h4>UserViewModel</h4>*@
+@*        <hr />*@
+@*        @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+@*        *@
+@**@
+@*        @*<div class="form-group">*@
+@*            @Html.LabelFor(model => model.AvatarPath, htmlAttributes: new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.AvatarPath, new { htmlAttributes = new { @class = "form-control" } })*@
+@*                @Html.ValidationMessageFor(model => model.AvatarPath, "", new { @class = "text-danger" })*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })*@
+@*                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.LastName, htmlAttributes: new {@class = "control-label col-md-2"})*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})*@
+@*                @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})*@
+@*            </div>*@
+@*        </div>*@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })*@
+@*                @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })*@
+@*                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@*        <div class="form-group">*@
+@*            <div class="col-md-offset-2 col-md-10">*@
+@*                <input type="submit" value="Сохранить" class="btn btn-success" />*@
+@*            </div>*@
+@*        </div>*@
+@*    </div>*@
+@*}*@
+@**@
+@*<div>*@
+@*    @Html.ActionLink("Сменить пароль", "ChangePassword", "Account")*@
+@*    @Html.ActionLink("Вернуться", "Manage", "Account")*@
+@*</div>*@
+
+
+

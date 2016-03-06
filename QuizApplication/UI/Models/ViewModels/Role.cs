@@ -10,7 +10,7 @@ namespace UI.Models.ViewModels
     {
         public Guid RoleId { get; set; }
         public string Name { get; set; }
-        public List<User> Users { get; set; }
+        public List<UserViewModel> Users { get; set; }
 
     }
 }

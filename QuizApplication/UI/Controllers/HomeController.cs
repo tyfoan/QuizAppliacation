@@ -4,7 +4,6 @@ using BLL.Interfaces;
 using UI.Models.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using UI.Models.ViewModels;
 
 namespace UI.Controllers
 {
@@ -14,7 +13,7 @@ namespace UI.Controllers
 
         public HomeController(IBaseQuizService service)
         {
-            this._service = service;
+            _service = service;
         }
 
 #pragma warning disable 618

@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.EF;
@@ -35,7 +36,7 @@ namespace DAL.Repositories
             }
         }
 
-        public IRepository<User> Users
+        public IUserRepository Users
         {
             get
             {

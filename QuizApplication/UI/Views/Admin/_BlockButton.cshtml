@@ -1,0 +1,3 @@
+﻿@model Int32
+@Ajax.ActionLink("Заблокировать", "IsBlocked", new { id = Model },
+                        new AjaxOptions() { UpdateTargetId = Model.ToString() }, new { @class = "btn btn-danger", id = "partialTrue" })

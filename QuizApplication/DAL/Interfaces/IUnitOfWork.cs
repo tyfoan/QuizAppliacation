@@ -6,7 +6,7 @@ namespace DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<User> Users { get; }
+        IUserRepository Users { get; }
         IRepository<Role> Roles{ get; }
         IRepository<Answer> Answers { get; }
         IRepository<Question> Questions { get; }

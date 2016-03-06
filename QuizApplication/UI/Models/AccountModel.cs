@@ -103,14 +103,7 @@ namespace UI.Models
     ////        public string ConfirmPassword { get; set; }
     ////    }
 #endregion
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base("DefaultConnection")
-        { }
-
-        public DbSet<UserProfile> UserProfiles { get; set; }
-    }
+   
 
 
      [Table("Users")]
@@ -152,8 +145,10 @@ namespace UI.Models
 
     public class LoginModel
     {
-        [Required]
-        [Display(Name = "Имя пользователя")]
+        //[Required]
+        [Required(ErrorMessage = "Введите адрес электронной почты")]
+        [RegularExpression(@"^([A-Za-z0-9_-]+\.)*[A-Za-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$", ErrorMessage = "Введите кoрректный email")]
+        //[Display(Name = "Имя пользователя")]
         public string Email { get; set; }
 
         [Required]
@@ -167,9 +162,9 @@ namespace UI.Models
 
     public class RegisterModel
     {
-        [Required]
-        [Display(Name = "Имя пользователя")]
-        public string UserName { get; set; }
+        [Required(ErrorMessage = "Введите адрес электронной почты")]
+        [RegularExpression(@"^([A-Za-z0-9_-]+\.)*[A-Za-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$", ErrorMessage = "Введите кoрректный email")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Значение \"{0}\" должно содержать не менее {2} символов.", MinimumLength = 6)]
@@ -181,6 +176,29 @@ namespace UI.Models
         [Display(Name = "Подтверждение пароля")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Имя")]
+        [RegularExpression(@"^[А-Я]+[а-я]{2,20}$", ErrorMessage = "Введите корректное имя")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Фамилия")]
+        [RegularExpression(@"^[А-Я]+[а-я]{2,30}$", ErrorMessage = "Введите корректную фамилию")]
+        public string LastName { get; set; }
+
+
+        [Display(Name = "Отчество")]
+        [RegularExpression(@"^[А-Я]+[а-я]{2,30}$", ErrorMessage = "Введите корректное отчество")]
+        public string MiddleName { get; set; } 
+
+        [Display(Name = "Адрес")]
+        //[RegularExpression(@"^[А-Я]+[а-я]{2,30}$", ErrorMessage = "Введите корректное отчество")]
+        public string Address { get; set; }
+
+        //[Display(Name = "Номер телефона")]
+        //[RegularExpression(@"\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2}", ErrorMessage = "Введите правильный номер телефона (ххх) ххх-хх-хх")]
+        //public string Phone { get; set; }
     }
 
     public class ExternalLogin
@@ -188,5 +206,23 @@ namespace UI.Models
         public string Provider { get; set; }
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
+    }
+    public class ChangePasswordModel
+    {
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Теущий пароль")]
+        public string oldPassword { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Пароль должен содержать не меньше 6 символов", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Новый пароль")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Подтверждение пароля")]
+        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        public string ConfirmPassword { get; set; }
     }
 }
