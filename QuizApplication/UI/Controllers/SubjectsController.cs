@@ -20,6 +20,9 @@ namespace UI.Controllers
             _service = service;
             var config = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<AnswerViewModel, AnswerDto>();
+                cfg.CreateMap<AnswerDto, AnswerViewModel>();
+
                 cfg.CreateMap<QuestionViewModel, QuestionDto>();
                 cfg.CreateMap<QuestionDto, QuestionViewModel>();
 

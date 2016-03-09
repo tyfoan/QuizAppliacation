@@ -10,11 +10,28 @@ namespace UI.Controllers
 {
     public class ExamineController : Controller
     {
-        readonly IBaseQuizService _service;
+        private readonly IBaseQuizService _service;
+        private readonly IMapper _mapper;
 
         public ExamineController(IBaseQuizService service)
         {
             _service = service;
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<AnswerViewModel, AnswerDto>();
+                cfg.CreateMap<AnswerDto, AnswerViewModel>();
+
+                cfg.CreateMap<QuestionViewModel, QuestionDto>();
+                cfg.CreateMap<QuestionDto, QuestionViewModel>();
+
+                cfg.CreateMap<TestViewModel, TestDto>();
+                cfg.CreateMap<TestDto, TestViewModel>();
+
+                cfg.CreateMap<SubjectViewModel, SubjectDto>();
+                cfg.CreateMap<SubjectDto, SubjectViewModel>();
+            });
+            _mapper = config.CreateMapper();
+
         }
         // GET: Examine
         public ActionResult Index()
@@ -24,11 +41,7 @@ namespace UI.Controllers
 
         public ActionResult Testing(int testId)
         {
-            //Mapper.CreateMap<ThemeDTO, Theme>();
-#pragma warning disable 618
-            Mapper.CreateMap<TestDto, TestViewModel>();
-            TestViewModel test = Mapper.Map<TestDto, TestViewModel>(_service.Get(testId));
-#pragma warning restore 618
+            TestViewModel test = _mapper.Map<TestDto, TestViewModel>(_service.Get(testId));
             //List<Question> questions = test.Questions;
 
             foreach (var item in test.Questions)

@@ -253,9 +253,7 @@
     <Content Include="Views\Subjects\Edit.cshtml" />
     <Content Include="Views\Answers\Create.cshtml" />
     <Content Include="Views\Answers\Delete.cshtml" />
-    <Content Include="Views\Answers\Details.cshtml" />
     <Content Include="Views\Answers\Edit.cshtml" />
-    <Content Include="Views\Answers\Index.cshtml" />
     <Content Include="Views\Tests\Details.cshtml" />
     <Content Include="Views\Subjects\Index.cshtml" />
   </ItemGroup>

@@ -5,41 +5,48 @@
 }
 
 <h2>Details</h2>
-
+<p>
+    @Html.ActionLink("Create New", "Create", "Answers", new { questionId = ViewBag.QuestionId }, null)
+</p>
 <div>
     <h4>@Model.QuestionContent</h4>
     <hr />
-    <<table class="table">
-    <thead>
-        <tr>
-            <th>Варианты ответов</th>
-        </tr>
-    </thead>
-
-    @foreach (var innerItem in Model.Answers)
-    {
-        <tbody>
+    <table class="table">
+        <thead>
             <tr>
-                <td>@innerItem.ContentAnswer</td>
-                <td>@Html.CheckBox("",innerItem.IsTrue,new { @readonly = innerItem.IsTrue })</td>
-                <td>
-                    @Html.ActionLink("Edit answer", "Edit", "Answers", new { id = innerItem.AnswerId, testId = ViewBag.TestId }, null) |
-                    @Html.ActionLink("Delete answer", "Delete", "Answers", new { id = innerItem.AnswerId, testId = ViewBag.TestId }, null)
-                </td>
+                <th>Варианты ответов</th>
+                <th>Правильный ответов</th>
             </tr>
-        </tbody>
+        </thead>
 
-    }
-    @*@foreach (var theme in Model.Themes)
+        @foreach (var innerItem in Model.Answers)
         {
-            <td>
+            <tbody>
+                <tr>
+                    <td>@innerItem.ContentAnswer</td>
+                    <td>
+                        @if (innerItem.IsTrue)
+                        { <span>Верный</span> }
+                        else
+                        { <span>Не верный</span>}
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit answer", "Edit", "Answers", new { id = innerItem.AnswerId, questionId = ViewBag.QuestionId }, null) |
+                        @Html.ActionLink("Delete answer", "Delete", "Answers", new { id = innerItem.AnswerId, questionId = ViewBag.QuestionId }, null)
+                    </td>
+                </tr>
+            </tbody>
 
-            </td>
-        }*@
-</table>
+        }
+        @*@foreach (var theme in Model.Themes)
+            {
+                <td>
+
+                </td>
+            }*@
+    </table>
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { testId = Model.QuestionId }) |
     @Html.ActionLink("Back to List", "Details", "Tests", new { id = Model.TestId }, null)
 </p>

@@ -11,10 +11,25 @@ namespace BLL.Services
     public class QuizService : IBaseQuizService
     {
         private readonly IUnitOfWork _database;
+        private readonly IMapper _mapper;
         public QuizService(IUnitOfWork uow)
         {
             _database = uow;
-            //var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDto>());
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Answer, AnswerDto>();
+                cfg.CreateMap<AnswerDto, Answer>();
+
+                cfg.CreateMap<Question, QuestionDto>();
+                cfg.CreateMap<QuestionDto, Question>();
+
+                cfg.CreateMap<Test, TestDto>();
+                cfg.CreateMap<TestDto, Test>();
+
+                cfg.CreateMap<Subject, SubjectDto>();
+                cfg.CreateMap<SubjectDto, Subject>();
+            });
+            _mapper = config.CreateMapper();
         }
 
 
@@ -46,9 +61,7 @@ namespace BLL.Services
 
         public TestDto Get(int id)
         {
-            Mapper.CreateMap<Theme, ThemeDto>();
-            Mapper.CreateMap<Test, TestDto>();
-            return Mapper.Map<Test, TestDto>(_database.Tests.Get(id));
+            return _mapper.Map<Test, TestDto>(_database.Tests.Get(id));
         }
 #pragma warning restore 618
 

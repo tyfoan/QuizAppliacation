@@ -6,6 +6,8 @@ namespace BLL.DTO
     public class AnswerDto
     {
         public int AnswerId { get; set; }
+        public int QuestionId { get; set; }
+
         public bool IsTrue { get; set; }
         public string ContentAnswer { get; set; }
         public string TrueAnswer { get; set; }

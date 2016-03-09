@@ -23,6 +23,7 @@ namespace UI.Util
             _kernel.Bind<ITestService>().To<TestService>();
             _kernel.Bind<ISubjectService>().To<SubjectService>();
             _kernel.Bind<IQuestionService>().To<QuestionService>();
+            _kernel.Bind<IAnswerService>().To<AnswerService>();
         }
         public object GetService(Type serviceType)
         {

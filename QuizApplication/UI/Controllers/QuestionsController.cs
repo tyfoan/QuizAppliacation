@@ -35,10 +35,7 @@ namespace UI.Controllers
         // GET: Questions/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            ViewBag.QuestionId = id;
             QuestionDto question = _questionService.GetQuestion(id.Value);
             if (question == null)
             {

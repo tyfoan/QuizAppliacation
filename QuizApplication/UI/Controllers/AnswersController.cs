@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using BLL.DTO;
@@ -10,19 +9,22 @@ namespace UI.Controllers
 {
     public class AnswersController : Controller
     {
-        private IAnswerService _questionService;
+        private IAnswerService _answerService;
         private ISubjectService _subjectService;
         private IMapper _mapper;
 
-        public AnswersController(IAnswerService questionService, ISubjectService subjectService)
+        public AnswersController(IAnswerService answerService, ISubjectService subjectService)
         {
-            _questionService = questionService;
+            _answerService = answerService;
             _subjectService = subjectService;
 
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<AnswerViewModel, AnswerDto>();
                 cfg.CreateMap<AnswerDto, AnswerViewModel>();
+
+                cfg.CreateMap<QuestionViewModel, QuestionDto>();
+                cfg.CreateMap<QuestionDto, QuestionViewModel>();
 
                 cfg.CreateMap<SubjectViewModel, SubjectDto>();
                 cfg.CreateMap<SubjectDto, SubjectViewModel>();
@@ -32,26 +34,11 @@ namespace UI.Controllers
 
 
 
-        // GET: Answers/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AnswerDto question = _questionService.GetAnswer(id.Value);
-            if (question == null)
-            {
-                return HttpNotFound();
-            }
-            return View(question);
-        }
-
         // GET: Answers/Create
-        public ActionResult Create()
+        public ActionResult Create(int questionId)
         {
-            var subjects = _mapper.Map<IEnumerable<SubjectDto>, List<SubjectViewModel>>(_subjectService.GetSubjects());
             var model = new AnswerViewModel();
+            model.QuestionId = questionId;
             return View(model);
         }
 
@@ -60,15 +47,15 @@ namespace UI.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AnswerViewModel question)  // [Bind(Include = "AnswerId,Name,Complexity,Rate,Duration,IsApproved")]
+        public ActionResult Create(AnswerViewModel answer, int? questionId)  // [Bind(Include = "AnswerId,Name,Complexity,Rate,Duration,IsApproved")]
         {
             if (ModelState.IsValid)
             {
-                AnswerDto questionDto = _mapper.Map<AnswerViewModel, AnswerDto>(question);
-                _questionService.AddAnswer(questionDto);
-                return RedirectToAction("Index");
+                AnswerDto answerDto = _mapper.Map<AnswerViewModel, AnswerDto>(answer);
+                _answerService.AddAnswer(answerDto);
+                return RedirectToAction("Details", "Questions", new { id = answer.QuestionId });
             }
-            return View(question);
+            return View(answer);
         }
 
         // GET: Answers/Edit/5
@@ -79,14 +66,14 @@ namespace UI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            AnswerDto question = _questionService.GetAnswer(id.Value);
-            AnswerViewModel questionVewModel = _mapper.Map<AnswerDto, AnswerViewModel>(question);
+            AnswerDto answer = _answerService.GetAnswer(id.Value);
+            AnswerViewModel answerVewModel = _mapper.Map<AnswerDto, AnswerViewModel>(answer);
 
-            if (question == null)
+            if (answer == null)
             {
                 return HttpNotFound();
             }
-            return View(questionVewModel);
+            return View(answerVewModel);
         }
 
         // POST: Answers/Edit/5
@@ -94,26 +81,24 @@ namespace UI.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(AnswerViewModel question)
+        public ActionResult Edit(AnswerViewModel answer, int? questionId)
         {
             if (ModelState.IsValid)
             {
-                AnswerDto questionDto = _mapper.Map<AnswerViewModel, AnswerDto>(question);
-                _questionService.EditAnswer(questionDto);
-                return RedirectToAction("Index");
+                AnswerDto answerDto = _mapper.Map<AnswerViewModel, AnswerDto>(answer);
+                _answerService.EditAnswer(answerDto);
+                return RedirectToAction("Details", "Questions", new { id = answer.QuestionId});
+
             }
-            return View(question);
+            return View(answer);
         }
 
         // GET: Answers/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? questionId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            _questionService.DeleteAnswer(id.Value);
-            return RedirectToAction("Index");
+            _answerService.DeleteAnswer(id.Value);
+            return RedirectToAction("Details", "Questions", new { id = questionId });
+
         }
     }
 }
