@@ -22,12 +22,12 @@ namespace UI.Controllers
             return View();
         }
 
-        public ActionResult Testing(Guid testId)
+        public ActionResult Testing(int testId)
         {
             //Mapper.CreateMap<ThemeDTO, Theme>();
 #pragma warning disable 618
-            Mapper.CreateMap<TestDto, Test>();
-            Test test = Mapper.Map<TestDto, Test>(_service.Get(testId));
+            Mapper.CreateMap<TestDto, TestViewModel>();
+            TestViewModel test = Mapper.Map<TestDto, TestViewModel>(_service.Get(testId));
 #pragma warning restore 618
             //List<Question> questions = test.Questions;
 
@@ -41,7 +41,7 @@ namespace UI.Controllers
 
 
         [HttpPost]
-        public ActionResult EndTest(Test test) //questions=null
+        public ActionResult EndTest(TestViewModel test) //questions=null
         {
             int count = test.Questions.Count;
 
@@ -51,7 +51,6 @@ namespace UI.Controllers
                 {
                     _service.AddStudentAnswer(new StudentAnswerDto()
                     {
-                        StudentAnswerId = Guid.NewGuid(),
                         AnswerId = answer.AnswerId,
                         QuestionId = question.QuestionId,
                         //UserId = User.UserId TODO:Добавить юзера.
@@ -66,9 +65,8 @@ namespace UI.Controllers
                 }
             }
 
-            TestPass testPass = new TestPass()
+            TestPassViewModel testPass = new TestPassViewModel()
             {
-                TestPassId = Guid.NewGuid(),
                 Test = test,
                 Score = count
                 //User = Test.User;

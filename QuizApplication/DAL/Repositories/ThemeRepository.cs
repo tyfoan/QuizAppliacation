@@ -19,7 +19,7 @@ namespace DAL.Repositories
             return _db.Themes;
         }
 
-        public Theme Get(Guid id)
+        public Theme Get(int id)
         {
             return _db.Themes.Find(id);
         }
@@ -34,13 +34,18 @@ namespace DAL.Repositories
             _db.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Theme theme = _db.Themes.Find(id);
             if (theme != null)
             {
                 _db.Themes.Remove(theme);
             }
+        }
+
+        public IEnumerable<Theme> Find(Func<Theme, bool> predicate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

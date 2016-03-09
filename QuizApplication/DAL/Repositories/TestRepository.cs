@@ -3,6 +3,7 @@ using DAL.Entities;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DAL.Repositories
 {
@@ -20,7 +21,7 @@ namespace DAL.Repositories
             return _db.Tests;
         }
 
-        public Test Get(Guid id)
+        public Test Get(int id)
         {
             return _db.Tests.Find(id);
         }
@@ -35,13 +36,18 @@ namespace DAL.Repositories
             _db.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Test test = _db.Tests.Find(id);
             if (test != null)
             {
                 _db.Tests.Remove(test);
             }
+        }
+
+        public IEnumerable<Test> Find(Func<Test, bool> predicate)
+        {
+            return _db.Tests.Where(predicate);
         }
     }
 }

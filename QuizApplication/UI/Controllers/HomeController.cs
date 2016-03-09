@@ -19,14 +19,14 @@ namespace UI.Controllers
 #pragma warning disable 618
         public ActionResult Index()
         {
-            Mapper.CreateMap<ThemeDto, Theme>();
-            Mapper.CreateMap<TestDto, Test>();
-            Mapper.CreateMap<QuestionDto, Question>();
-            Mapper.CreateMap<AnswerDto, Answer>();
+            Mapper.CreateMap<ThemeDto, ThemeViewModel>();
+            Mapper.CreateMap<TestDto, TestViewModel>();
+            Mapper.CreateMap<QuestionDto, QuestionViewModel>();
+            Mapper.CreateMap<AnswerDto, AnswerViewModel>();
 
             //Mapper.CreateMap<Subject, SubjectDTO>();
-            Mapper.CreateMap<SubjectDto, Subject>();
-            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<Subject>>(_service.GetAll());
+            Mapper.CreateMap<SubjectDto, SubjectViewModel>();
+            List<SubjectViewModel> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<SubjectViewModel>>(_service.GetAll());
             return View(subjects);
         }
 #pragma warning restore 618

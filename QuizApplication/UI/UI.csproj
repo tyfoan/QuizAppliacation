@@ -154,20 +154,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AnswersController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\ExamineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
-    <Compile Include="Models\ViewModels\Answer.cs" />
-    <Compile Include="Models\ViewModels\Question.cs" />
-    <Compile Include="Models\ViewModels\StudentAnswer.cs" />
-    <Compile Include="Models\ViewModels\Subject.cs" />
-    <Compile Include="Models\ViewModels\Test.cs" />
-    <Compile Include="Models\ViewModels\TestPass.cs" />
-    <Compile Include="Models\ViewModels\Theme.cs" />
+    <Compile Include="Models\ViewModels\AnswerViewModel.cs" />
+    <Compile Include="Models\ViewModels\QuestionViewModel.cs" />
+    <Compile Include="Models\ViewModels\StudentAnswerViewModel.cs" />
+    <Compile Include="Models\ViewModels\SubjectViewModel.cs" />
+    <Compile Include="Models\ViewModels\TestViewModel.cs" />
+    <Compile Include="Models\ViewModels\TestPassViewModel.cs" />
+    <Compile Include="Models\ViewModels\ThemeViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -198,6 +202,12 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Questions\Create.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\Questions\Details.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -236,6 +246,18 @@
     <Content Include="Views\Admin\TableUsers.cshtml" />
     <Content Include="Views\Admin\_BlockButton.cshtml" />
     <Content Include="Views\Admin\_UnblockButton.cshtml" />
+    <Content Include="Views\Tests\Create.cshtml" />
+    <Content Include="Views\Tests\Edit.cshtml" />
+    <Content Include="Views\Subjects\Create.cshtml" />
+    <Content Include="Views\Subjects\Details.cshtml" />
+    <Content Include="Views\Subjects\Edit.cshtml" />
+    <Content Include="Views\Answers\Create.cshtml" />
+    <Content Include="Views\Answers\Delete.cshtml" />
+    <Content Include="Views\Answers\Details.cshtml" />
+    <Content Include="Views\Answers\Edit.cshtml" />
+    <Content Include="Views\Answers\Index.cshtml" />
+    <Content Include="Views\Tests\Details.cshtml" />
+    <Content Include="Views\Subjects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +273,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{d589f09b-c8d2-4ab5-be53-b05426a6b033}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{28c4b130-5b98-415e-a7df-3bddcfecf928}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\EnumModels\EnumModels.csproj">
       <Project>{16ec2b09-a71d-4b5b-bb62-19cfc0929f22}</Project>

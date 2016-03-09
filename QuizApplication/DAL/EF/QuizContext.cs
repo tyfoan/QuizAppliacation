@@ -19,9 +19,9 @@ namespace DAL.EF
         {
 
         }
-        static QuizContext()
-        {
-            Database.SetInitializer(new QuizDbInitializer());
-        }
+        //static QuizContext()
+        //{
+        //    Database.SetInitializer(new QuizDbInitializer());
+        //}
     }
 }

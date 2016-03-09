@@ -21,8 +21,8 @@ namespace UI.Models.ViewModels
 
 
         //public List<Role> Roles { get; set; }
-        public List<Subject> Subjects { get; set; }
-        public List<TestPass> TestPasses { get; set; }
+        public List<SubjectViewModel> Subjects { get; set; }
+        public List<TestPassViewModel> TestPasses { get; set; }
 
     }
 }

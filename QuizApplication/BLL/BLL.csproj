@@ -68,10 +68,18 @@
     <Compile Include="Infrastructure\WriteException.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IAnswerService.cs" />
     <Compile Include="Interfaces\IBaseQuizService.cs" />
+    <Compile Include="Interfaces\IQuestionService.cs" />
+    <Compile Include="Interfaces\ISubjectService.cs" />
+    <Compile Include="Interfaces\ITestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AnswerService.cs" />
+    <Compile Include="Services\QuestionService.cs" />
     <Compile Include="Services\QuizService.cs" />
+    <Compile Include="Services\SubjectService.cs" />
+    <Compile Include="Services\TestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

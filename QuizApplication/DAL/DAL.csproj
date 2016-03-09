@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\QuizContext.cs" />
-    <Compile Include="EF\QuizDBInitializer.cs" />
     <Compile Include="Entities\Answer.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\Role.cs" />

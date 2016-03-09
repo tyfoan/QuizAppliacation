@@ -4,15 +4,17 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.DTO;
+using DAL.Entities;
 
 namespace UI.Models.ViewModels
 {
-    public class Answer
+    public class AnswerViewModel
     {
-        public Guid AnswerId { get; set; }
+        public int AnswerId { get; set; }
         public bool IsTrue { get; set; }
         public string ContentAnswer { get; set; }
         public bool IsAnswered { get; set; }
-
+        public List<Test> Tests { get; set; }
     }
 }

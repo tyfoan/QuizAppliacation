@@ -6,9 +6,9 @@ using System.Web;
 
 namespace UI.Models.ViewModels
 {
-    public class Theme
+    public class ThemeViewModel
     {
-        public Guid ThemeId { get; set; }
+        public int ThemeId { get; set; }
         public string Name { get; set; }
 
     }

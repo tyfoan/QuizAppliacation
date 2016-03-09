@@ -20,6 +20,9 @@ namespace UI.Util
         {
             _kernel.Bind<IBaseQuizService>().To<QuizService>();
             _kernel.Bind<IAccountService>().To<AccountService>();
+            _kernel.Bind<ITestService>().To<TestService>();
+            _kernel.Bind<ISubjectService>().To<SubjectService>();
+            _kernel.Bind<IQuestionService>().To<QuestionService>();
         }
         public object GetService(Type serviceType)
         {

@@ -1,0 +1,47 @@
+﻿@model BLL.DTO.SubjectDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Тесты</h2>
+<h4>Предмет @Html.DisplayFor(model => model.Name)</h4>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Tests", new { subjectId = ViewBag.SubjectId }, null)
+</p>
+<div>
+    <hr />
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Время</th>
+            <th>Сложность</th>
+            <th>Количество вопросов</th>
+            <th>Рейтинг</th>
+        </tr>
+        </thead>
+
+        @foreach (var innerItem in Model.Tests)
+        {
+            <tbody>
+            <tr>
+                <td>@innerItem.Name</td>
+                <td>@{int x = innerItem.Duration/60; } @x мин.</td>
+                <td>@innerItem.Complexity</td>
+                <td>@innerItem.Questions.Count</td>
+                <td>@innerItem.Rate</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null) |
+                    @Html.ActionLink("Details", "Details", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null) |
+                    @Html.ActionLink("Delete", "Delete", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null)
+                </td>
+            </tr>
+            </tbody>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -4,7 +4,7 @@ namespace BLL.DTO
 {
     public class ThemeDto
     {
-        public Guid ThemeId { get; set; }
+        public int ThemeId { get; set; }
         public string Name { get; set; }
     }
 }

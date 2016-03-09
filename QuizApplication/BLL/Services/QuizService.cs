@@ -44,7 +44,7 @@ namespace BLL.Services
             return Mapper.Map<IEnumerable<Subject>, List<SubjectDto>>(_database.Subjects.GetAll());
         }
 
-        public TestDto Get(Guid id)
+        public TestDto Get(int id)
         {
             Mapper.CreateMap<Theme, ThemeDto>();
             Mapper.CreateMap<Test, TestDto>();

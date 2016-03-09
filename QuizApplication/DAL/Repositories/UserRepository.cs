@@ -43,11 +43,6 @@ namespace DAL.Repositories
                 _db.Users.Remove(user);
             }
         }
-
-
-
-
-
         public User First(Func<User, bool> predicate)
         {
             return _db.Users.First(predicate);

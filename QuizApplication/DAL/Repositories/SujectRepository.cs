@@ -20,7 +20,7 @@ namespace DAL.Repositories
         }
 
         
-        public Subject Get(Guid id)
+        public Subject Get(int id)
         {
             return _db.Subjects.Find(id);
         }
@@ -35,13 +35,18 @@ namespace DAL.Repositories
             _db.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Subject subj = _db.Subjects.Find(id);
             if (subj != null)
             {
                 _db.Subjects.Remove(subj);
             }
+        }
+
+        public IEnumerable<Subject> Find(Func<Subject, bool> predicate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

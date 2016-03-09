@@ -6,7 +6,7 @@ namespace BLL.Interfaces
 {
     public interface IBaseQuizService
     {
-        TestDto Get(Guid id);
+        TestDto Get(int id);
         IEnumerable<SubjectDto> GetAll();
         void Dispose();
         void AddStudentAnswer(StudentAnswerDto studentAnswer);

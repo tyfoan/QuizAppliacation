@@ -8,11 +8,13 @@ namespace DAL.Entities
 {
     public class Question
     {
-        public Guid QuestionId { get; set; }
+        public int QuestionId { get; set; }
+        public int TestId { get; set; }
         public string QuestionContent { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual ICollection<StudentAnswer> StudentAnswers { get; set; }
         public virtual Test Test { get; set; }
+
     }
 }

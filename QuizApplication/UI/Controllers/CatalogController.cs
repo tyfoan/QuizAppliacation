@@ -26,24 +26,24 @@ namespace UI.Controllers
 
         public ActionResult List()
         {
-            Mapper.CreateMap<ThemeDto, Theme>();
+            Mapper.CreateMap<ThemeDto, ThemeViewModel>();
 
-            Mapper.CreateMap<TestDto, Test>();
-            Mapper.CreateMap<QuestionDto, Question>();
-            Mapper.CreateMap<AnswerDto, Answer>();
+            Mapper.CreateMap<TestDto, TestViewModel>();
+            Mapper.CreateMap<QuestionDto, QuestionViewModel>();
+            Mapper.CreateMap<AnswerDto, AnswerViewModel>();
 
             //Mapper.CreateMap<Subject, SubjectDTO>();
-            Mapper.CreateMap<SubjectDto, Subject>();
-            List<Subject> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<Subject>>(_service.GetAll());
+            Mapper.CreateMap<SubjectDto, SubjectViewModel>();
+            List<SubjectViewModel> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<SubjectViewModel>>(_service.GetAll());
             return View(subjects);
         }
 
 
-        public ActionResult AboutTest(Guid testId)
+        public ActionResult AboutTest(int testId)
         {
-            Mapper.CreateMap<ThemeDto, Theme>();
-            Mapper.CreateMap<TestDto, Test>();
-            Test test = Mapper.Map<TestDto, Test>(_service.Get(testId));
+            Mapper.CreateMap<ThemeDto, ThemeViewModel>();
+            Mapper.CreateMap<TestDto, TestViewModel>();
+            TestViewModel test = Mapper.Map<TestDto, TestViewModel>(_service.Get(testId));
             return View(test);
         }
 #pragma warning restore 618

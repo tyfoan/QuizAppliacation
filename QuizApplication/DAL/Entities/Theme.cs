@@ -8,7 +8,7 @@ namespace DAL.Entities
 {
     public class Theme
     {
-        public Guid ThemeId { get; set; }
+        public int ThemeId { get; set; }
         public string Name { get; set; }
 
         public virtual Test Test { get; set; }

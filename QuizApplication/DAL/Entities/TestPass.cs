@@ -7,7 +7,7 @@ namespace DAL.Entities
 {
     public class TestPass
     {
-        public Guid TestPassId { get; set; }
+        public int TestPassId { get; set; }
         public string Status { get; set; }
         public int Score { get; set; }
         public DateTime Time { get; set; }

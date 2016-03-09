@@ -21,7 +21,7 @@ namespace DAL.Repositories
             return _db.Roles;
         }
 
-        public Role Get(Guid id)
+        public Role Get(int id)
         {
             return _db.Roles.Find(id);
         }
@@ -36,13 +36,18 @@ namespace DAL.Repositories
             _db.Entry(item).State = EntityState.Modified;
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Role role = _db.Roles.Find(id);
             if (role != null)
             {
                 _db.Roles.Remove(role); 
             }
+        }
+
+        public IEnumerable<Role> Find(Func<Role, bool> predicate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

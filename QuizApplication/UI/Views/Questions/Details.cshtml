@@ -1,0 +1,45 @@
+﻿@model BLL.DTO.QuestionDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.QuestionContent</h4>
+    <hr />
+    <<table class="table">
+    <thead>
+        <tr>
+            <th>Варианты ответов</th>
+        </tr>
+    </thead>
+
+    @foreach (var innerItem in Model.Answers)
+    {
+        <tbody>
+            <tr>
+                <td>@innerItem.ContentAnswer</td>
+                <td>@Html.CheckBox("",innerItem.IsTrue,new { @readonly = innerItem.IsTrue })</td>
+                <td>
+                    @Html.ActionLink("Edit answer", "Edit", "Answers", new { id = innerItem.AnswerId, testId = ViewBag.TestId }, null) |
+                    @Html.ActionLink("Delete answer", "Delete", "Answers", new { id = innerItem.AnswerId, testId = ViewBag.TestId }, null)
+                </td>
+            </tr>
+        </tbody>
+
+    }
+    @*@foreach (var theme in Model.Themes)
+        {
+            <td>
+
+            </td>
+        }*@
+</table>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { testId = Model.QuestionId }) |
+    @Html.ActionLink("Back to List", "Details", "Tests", new { id = Model.TestId }, null)
+</p>
