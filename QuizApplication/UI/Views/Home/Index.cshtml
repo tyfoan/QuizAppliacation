@@ -27,6 +27,9 @@
                     Тесты
                 </th>
             </tr>
+            @{
+                int lessThan = 0;
+            }
             @foreach (var item in Model)
             {
                 <tr>
@@ -34,21 +37,30 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TestAmount)
+                        @item.Tests.Count
                     </td>
                     <td>
                         @foreach (var nestItem in item.Tests)
                         {
-                            @Html.DisplayFor(modelItem => nestItem.Name);<br />
+                            if (lessThan <= 2)
+                            {
+                                <span>- </span>@Html.DisplayFor(modelItem => nestItem.Name)
+                                <br />
+                            }
+                            else
+                            {
+                                lessThan = 0;
+                                break;
+                            }
+                            lessThan += 1;
                         }
                     </td>
                 </tr>
-
             }
         </table>
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("List","Catalog")">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-8 col-md-offset-2">
+    @*@*<div class="col-md-8 col-md-offset-2">
         <h2>Недавно добавленные тесты</h2>
         <table class="table">
             <tr>
@@ -80,13 +92,7 @@
                     </tr>
                 }
             }
-        </table>
+        </table>*@
 
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-        <h2>Программы тестирования по предметам</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    @*<p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>*@
 </div>

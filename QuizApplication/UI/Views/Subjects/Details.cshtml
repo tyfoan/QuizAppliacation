@@ -1,14 +1,14 @@
 ﻿@model BLL.DTO.SubjectDto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Тесты";
 }
 
 <h2>Тесты</h2>
-<h4>Предмет @Html.DisplayFor(model => model.Name)</h4>
+<h4>Предмет: @Html.DisplayFor(model => model.Name)</h4>
 
 <p>
-    @Html.ActionLink("Create New", "Create", "Tests", new { subjectId = ViewBag.SubjectId }, null)
+    @Html.ActionLink("Создать новый тест", "Create", "Tests", new { subjectId = ViewBag.SubjectId }, null)
 </p>
 <div>
     <hr />
@@ -19,7 +19,6 @@
             <th>Время</th>
             <th>Сложность</th>
             <th>Количество вопросов</th>
-            <th>Рейтинг</th>
         </tr>
         </thead>
 
@@ -28,14 +27,13 @@
             <tbody>
             <tr>
                 <td>@innerItem.Name</td>
-                <td>@{int x = innerItem.Duration/60; } @x мин.</td>
+                <td>@{int x = innerItem.Duration; } @x мин.</td>
                 <td>@innerItem.Complexity</td>
                 <td>@innerItem.Questions.Count</td>
-                <td>@innerItem.Rate</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null) |
-                    @Html.ActionLink("Details", "Details", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null) |
-                    @Html.ActionLink("Delete", "Delete", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null)
+                    @Html.ActionLink("Редактировть", "Edit", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null) |
+                    @Html.ActionLink("К вопросам", "Details", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null) |
+                    @Html.ActionLink("Удалить", "Delete", "Tests", new {id = innerItem.TestId, subjectId = ViewBag.SubjectId}, null)
                 </td>
             </tr>
             </tbody>
@@ -43,5 +41,5 @@
     </table>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад", "Index")
 </p>

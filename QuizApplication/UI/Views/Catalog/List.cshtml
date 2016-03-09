@@ -29,7 +29,6 @@
                             <th>Время</th>
                             <th>Сложность</th>
                             <th>Количество вопросов</th>
-                            <th>Рейтинг</th>
                             <th>Пройти тест</th>
                         </tr>
                     </thead>
@@ -42,7 +41,6 @@
                                 <td>@{int x = innerItem.Duration / 60; } @x мин.</td>
                                 <td>@innerItem.Complexity</td>
                                 <td>@innerItem.Questions.Count</td>
-                                <td>@innerItem.Rate</td>
                                 <td>
                                     @{
                                       //TODO: Зачем передают ew { testId = innerItem.TestId, Subject = item.Name, Test = innerItem.Name } fix.

@@ -60,5 +60,11 @@ namespace BLL.Services
             _database.Save();
             return account.IsBlocked;
         }
+
+
+        public bool IsUserBlocked(string email)
+        {
+            return _database.Users.First(x => x.Email == email).IsBlocked;
+        }
     }
 }

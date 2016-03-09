@@ -4,14 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Создать</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(x => x.SubjectId )
     <div class="form-horizontal">
-        <h4>Test</h4>
+        <h4>Тест</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -40,15 +40,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsApproved, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsApproved)
-                    @Html.ValidationMessageFor(model => model.IsApproved, "", new {@class = "text-danger"})
-                </div>
-            </div>
-        </div>
+   
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.Subjects, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -68,5 +60,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Details", "Subjects", new { subjectId = Model.SubjectId }, null)
+    @Html.ActionLink("Назад", "Details", "Subjects", new { subjectId = Model.SubjectId }, null)
 </div>

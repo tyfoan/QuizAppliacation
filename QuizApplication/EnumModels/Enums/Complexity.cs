@@ -8,9 +8,9 @@ namespace Enums
 {
     public enum Complexity : byte
     {
-        Starter = 1,
-        Essential = 2,
-        Advanced = 3,
-        Professional = 4
+        Starter = 0,
+        Essential = 1,
+        Advanced = 2,
+        Professional = 3
     }
 }

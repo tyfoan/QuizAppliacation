@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Предметы</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Создать тест", "Create")
 </p>
 <table class="table">
     <tr>
@@ -16,9 +16,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Complexity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TestAmount)
@@ -37,15 +34,12 @@
                 @Html.DisplayFor(modelItem => item.Complexity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Rate)
+                @Html.DisplayFor(modelItem => item.Tests.Count)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TestAmount)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { SubjectId = item.SubjectId }) |
-                @Html.ActionLink("Details", "Details", new { SubjectId = item.SubjectId }) |
-                @Html.ActionLink("Delete", "Delete", new { SubjectId = item.SubjectId })
+                @Html.ActionLink("Редактировать", "Edit", new { SubjectId = item.SubjectId }) |
+                @Html.ActionLink("К тестам", "Details", new { SubjectId = item.SubjectId }) |
+                @Html.ActionLink("Удалить", "Delete", new { SubjectId = item.SubjectId })
             </td>
         </tr>
     }

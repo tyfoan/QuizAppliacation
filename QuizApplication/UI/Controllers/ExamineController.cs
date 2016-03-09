@@ -66,7 +66,6 @@ namespace UI.Controllers
                     {
                         AnswerId = answer.AnswerId,
                         QuestionId = question.QuestionId,
-                        //UserId = User.UserId TODO:Добавить юзера.
                     });
                     if (answer.IsTrue == answer.IsAnswered)
                     { }

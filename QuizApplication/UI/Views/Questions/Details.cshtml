@@ -1,12 +1,12 @@
 ﻿@model BLL.DTO.QuestionDto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Ответы";
 }
 
-<h2>Details</h2>
+<h2>Ответы</h2>
 <p>
-    @Html.ActionLink("Create New", "Create", "Answers", new { questionId = ViewBag.QuestionId }, null)
+    @Html.ActionLink("Добавить вариант ответа", "Create", "Answers", new { questionId = ViewBag.QuestionId }, null)
 </p>
 <div>
     <h4>@Model.QuestionContent</h4>
@@ -31,8 +31,8 @@
                         { <span>Не верный</span>}
                     </td>
                     <td>
-                        @Html.ActionLink("Edit answer", "Edit", "Answers", new { id = innerItem.AnswerId, questionId = ViewBag.QuestionId }, null) |
-                        @Html.ActionLink("Delete answer", "Delete", "Answers", new { id = innerItem.AnswerId, questionId = ViewBag.QuestionId }, null)
+                        @Html.ActionLink("Редактировать", "Edit", "Answers", new { id = innerItem.AnswerId, questionId = ViewBag.QuestionId }, null) |
+                        @Html.ActionLink("Удалить", "Delete", "Answers", new { id = innerItem.AnswerId, questionId = ViewBag.QuestionId }, null)
                     </td>
                 </tr>
             </tbody>
@@ -48,5 +48,5 @@
 
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Details", "Tests", new { id = Model.TestId }, null)
+    @Html.ActionLink("Назад", "Details", "Tests", new { id = Model.TestId }, null)
 </p>

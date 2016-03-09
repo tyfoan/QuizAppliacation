@@ -13,7 +13,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Название теста
         </dt>
 
         <dd>
@@ -21,7 +21,7 @@
         </dd>
 
         <dt>
-            Question Amount
+            Количество вопросов
         </dt>
 
         <dd>
@@ -45,34 +45,32 @@
         <dd>
             @Model.Complexity
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Themes)
-        </dt>
-
-        <dd>
-
-        </dd>
     </dl>
-    @foreach (var item in Model.Themes)
-    {
-
-        <div class="topic">
-            @item.Name
-        </div>
-    }
-    <div hidden="hidden">Для прохождения теста необходимо пройти регистрацию или войти в аккаунт</div>
 </div>
-
+@if (Model.Questions.Count == 0)
+{
+    <p style="color: red">Тест еще в стадии разработки.</p>
+}
 
 
 <div class="buttons" id="left">
     <a href="@Url.Action("List", "Catalog")" class="btn btn-default btn-block">Назад</a>
 </div>
 
-<div class="buttons" id="right">
+@if (User.IsInRole("User"))
+{
+    <div>Для прохождения теста необходимо пройти регистрацию или войти в аккаунт</div>
 
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Пройти тест</a>
-</div>
+}
+else
+{
+    
+    <div class="buttons" id="right">
+        <a class="btn btn-primary btn-block" data-toggle="modal" href="@Url.Action("Login", "Account")">Пройти тест</a>
+    </div>
+
+}
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
