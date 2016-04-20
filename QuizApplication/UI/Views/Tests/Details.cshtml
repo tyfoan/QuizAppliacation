@@ -3,8 +3,8 @@
     ViewBag.Title = "Вопросы";
 }
 
-<h2>Ответы</h2>
-<h4>Тест @Html.DisplayFor(model => model.Name)</h4>
+<h2>Вопросы</h2>
+<h4>Тест <a href="@Url.Action("Details", "Subjects", new { subjectId = Model.SubjectId })"> @Html.DisplayFor(model => model.Name)</a></h4>
 
 <p>
     @Html.ActionLink("Добавить вопрос", "Create", "Questions", new { testId = ViewBag.TestId }, null)
@@ -36,5 +36,5 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { subjectId = Model.TestId }) |*@
-    @Html.ActionLink("Back to List", "Details", "Subjects", new { subjectId = Model.SubjectId }, null)
+    @Html.ActionLink("Назад", "Details", "Subjects", new { subjectId = Model.SubjectId }, null)
 </p>

@@ -9,7 +9,7 @@ using Enums;
 namespace UI.Models.ViewModels
 {
     public class TestViewModel
-    {   //TODO: attributes
+    {   
         public int TestId { get; set; }
         [Required(ErrorMessage = "Введите название теста.")]
         public string Name { get; set; }
@@ -22,6 +22,7 @@ namespace UI.Models.ViewModels
         [RegularExpression(@"^[0-9]*[1-9][0-9]*$", ErrorMessage = "Поле не может быть отрицательным или 0")]
         [Display(Name = "Длительность (мин.)")]
         public int Duration { get; set; }
+
         //public bool IsApproved { get; set; }  //юзер с ролью преподователь отправляет заявку на 
         //подтверждение администратору об публикации теста на сайте.
 

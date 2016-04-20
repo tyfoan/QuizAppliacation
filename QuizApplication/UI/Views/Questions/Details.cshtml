@@ -4,12 +4,14 @@
     ViewBag.Title = "Ответы";
 }
 
-<h2>Ответы</h2>
+<h2>Варианты ответов</h2>
+<h4>Вопрос: <a href="@Url.Action("Details", "Tests", new { id = Model.TestId })">@Html.DisplayFor(model => model.QuestionContent)</a></h4>
+
+
 <p>
     @Html.ActionLink("Добавить вариант ответа", "Create", "Answers", new { questionId = ViewBag.QuestionId }, null)
 </p>
 <div>
-    <h4>@Model.QuestionContent</h4>
     <hr />
     <table class="table">
         <thead>

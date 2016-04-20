@@ -20,5 +20,9 @@
         <td>@Html.DisplayNameFor(m => m.Score)</td>
         <td>@Model.Score</td>
     </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Test.Name)</td>
+        <td>@Model.Test.Name</td>
+    </tr>
 </table>
 <a class="btn btn-success" href="@Url.Action("List", "Catalog")">Закончить тест</a>

@@ -21,6 +21,9 @@ namespace UI.Controllers
                 cfg.CreateMap<AnswerViewModel, AnswerDto>();
                 cfg.CreateMap<AnswerDto, AnswerViewModel>();
 
+                cfg.CreateMap<StudentAnswerViewModel, StudentAnswerDto>();
+                cfg.CreateMap<StudentAnswerDto, StudentAnswerViewModel>();
+
                 cfg.CreateMap<QuestionViewModel, QuestionDto>();
                 cfg.CreateMap<QuestionDto, QuestionViewModel>();
 
@@ -42,51 +45,42 @@ namespace UI.Controllers
         public ActionResult Testing(int testId)
         {
             TestViewModel test = _mapper.Map<TestDto, TestViewModel>(_service.Get(testId));
-            //List<Question> questions = test.Questions;
+
 
             foreach (var item in test.Questions)
                 if (item != null)
                     item.AnswerVariant = item.Answers.Count(a => a.IsTrue) > 1 ? AnswerVarian.MoreThanOne : AnswerVarian.One;
 
-            //return View(questions);
             return View(test);
         }
 
 
         [HttpPost]
-        public ActionResult EndTest(TestViewModel test) //questions=null
+        public ActionResult EndTest(TestViewModel test, int userId)
         {
-            int count = test.Questions.Count;
-
             foreach (var question in test.Questions)
             {
+                if (question.ChoosenAnswer)
+                {
+                    break;
+
+                }
                 foreach (var answer in question.Answers)
                 {
-                    _service.AddStudentAnswer(new StudentAnswerDto()
+                    if (answer.IsAnswered)
                     {
-                        AnswerId = answer.AnswerId,
-                        QuestionId = question.QuestionId,
-                    });
-                    if (answer.IsTrue == answer.IsAnswered)
-                    { }
-                    else
-                    {
-                        count -= 1;
-                        break;
+                        _service.AddStudentAnswer(new StudentAnswerDto()
+                        {
+                            StudentAnswerGuid = Guid.NewGuid(),
+                            AnswerId = answer.AnswerId,
+                            QuestionId = question.QuestionId,
+                            UserId = userId
+                        });
                     }
                 }
             }
 
-            TestPassViewModel testPass = new TestPassViewModel()
-            {
-                Test = test,
-                Score = count
-                //User = Test.User;
-            };
-
-
-
-            return View(testPass);
+            return View(new TestPassViewModel() { Score = 999, Time = new DateTime(1994, 12, 1), Test = test });
         }
     }
 }

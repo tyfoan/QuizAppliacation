@@ -10,5 +10,6 @@ namespace BLL.Interfaces
         IEnumerable<SubjectDto> GetAll();
         void Dispose();
         void AddStudentAnswer(StudentAnswerDto studentAnswer);
+        double Estimate(int userId, int testId);
     }
 }

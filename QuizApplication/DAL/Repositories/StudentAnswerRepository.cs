@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DAL.EF;
 using DAL.Entities;
 using DAL.Interfaces;
 
 namespace DAL.Repositories
 {
-    public class StudentAnswerRepository : IRepository<StudentAnswer>
+    public class StudentAnswerRepository : IStudentAnswerRepository
     {
         private readonly QuizContext _db;
 
@@ -44,9 +45,9 @@ namespace DAL.Repositories
             }
         }
 
-        public IEnumerable<StudentAnswer> Find(Func<StudentAnswer, bool> predicate)
+        public StudentAnswer Find(Func<StudentAnswer, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _db.StudentAnswers.First(predicate);
         }
     }
 }

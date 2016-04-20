@@ -101,7 +101,7 @@ namespace DAL.Repositories
         }
 
 
-        public IRepository<StudentAnswer> StudentAnswers
+        public IStudentAnswerRepository StudentAnswers
         {
             get
             {

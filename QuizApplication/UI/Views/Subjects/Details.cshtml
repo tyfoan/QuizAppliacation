@@ -5,7 +5,7 @@
 }
 
 <h2>Тесты</h2>
-<h4>Предмет: @Html.DisplayFor(model => model.Name)</h4>
+<h4>Предмет:  <a href="@Url.Action("Index")">@Html.DisplayFor(model => model.Name)</a></h4>
 
 <p>
     @Html.ActionLink("Создать новый тест", "Create", "Tests", new { subjectId = ViewBag.SubjectId }, null)

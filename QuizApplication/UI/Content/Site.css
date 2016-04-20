@@ -24,6 +24,9 @@ textarea {
 }
 #list {
 }
+label {
+    font-weight: normal !important;
+}
 
 
 /* My styles */

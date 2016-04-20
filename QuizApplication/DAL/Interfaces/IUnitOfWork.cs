@@ -12,7 +12,7 @@ namespace DAL.Interfaces
         IRepository<Question> Questions { get; }
         IRepository<Subject> Subjects { get; }
         IRepository<Test> Tests { get; }
-        IRepository<StudentAnswer> StudentAnswers { get; }
+        IStudentAnswerRepository StudentAnswers { get; }
         void Save();
     }
 }

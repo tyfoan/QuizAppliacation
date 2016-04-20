@@ -9,14 +9,20 @@ namespace UI.Models.ViewModels
 {
     public class UserViewModel
     {
+        [Display(Name = null)]
         public int UserId { get; set; }
+        
         public string Email { get; set; }
-
+        [Display(Name = "Блокировка")]
         public bool IsBlocked { get; set; }
         public string AvatarPath { get; set; }
+        [Display(Name = "Имя")]
         public string FirstName { get; set; }
+        [Display(Name = "Отчество")]
         public string MiddleName { get; set; }
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; }
+        [Display(Name = "Адрес")]
         public string Address { get; set; }
 
 

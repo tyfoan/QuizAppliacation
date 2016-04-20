@@ -1,16 +1,13 @@
 ﻿@model IEnumerable<UI.Models.ViewModels.UserViewModel>
 
 @{
-    ViewBag.Title = "TableUsers";
+    ViewBag.Title = "Пользователи";
 }
 
-<h2>TableUsers</h2>
+<h2>Пользователи</h2>
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
@@ -38,9 +35,6 @@
             if (Roles.GetRolesForUser(item.Email)[0] != "Admin")
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserId)
-                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>

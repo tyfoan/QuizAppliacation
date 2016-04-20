@@ -8,7 +8,7 @@ namespace DAL.Entities
 {
     public class StudentAnswer
     {
-        public int StudentAnswerId { get; set; }
+        public Guid StudentAnswerId { get; set; }
         public virtual Answer Answer { get; set; }
         public virtual Question Question { get; set; }
         public virtual User User { get; set; }
