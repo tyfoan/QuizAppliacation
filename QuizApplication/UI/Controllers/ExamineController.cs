@@ -60,11 +60,11 @@ namespace UI.Controllers
         {
             foreach (var question in test.Questions)
             {
-                if (question.ChoosenAnswer)
-                {
-                    break;
+                //if (question.ChoosenAnswer)
+                //{
+                //    break;
 
-                }
+                //}
                 foreach (var answer in question.Answers)
                 {
                     if (answer.IsAnswered)

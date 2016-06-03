@@ -9,7 +9,7 @@ using UI.Models.ViewModels;
 
 namespace UI.Controllers
 {
-    
+
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
@@ -31,7 +31,7 @@ namespace UI.Controllers
         public ActionResult TableUsers()
         {
             var users = _mapper.Map<IEnumerable<UserDto>, List<UserViewModel>>(_accountService.GetUsers());
-            
+
 
             return View(users);
         }
@@ -47,7 +47,7 @@ namespace UI.Controllers
             {
                 return PartialView("_UnblockButton", id);
             }
-            
+
         }
     }
 }
