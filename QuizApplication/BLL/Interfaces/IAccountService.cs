@@ -11,6 +11,5 @@ namespace BLL.Interfaces
         UserDto GetDto(int id);
         bool Edit(UserDto userDto);
         bool BlockingUser(int id);
-        bool IsUserBlocked(string email);
     }
 }

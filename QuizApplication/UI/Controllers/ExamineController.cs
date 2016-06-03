@@ -21,9 +21,6 @@ namespace UI.Controllers
                 cfg.CreateMap<AnswerViewModel, AnswerDto>();
                 cfg.CreateMap<AnswerDto, AnswerViewModel>();
 
-                cfg.CreateMap<StudentAnswerViewModel, StudentAnswerDto>();
-                cfg.CreateMap<StudentAnswerDto, StudentAnswerViewModel>();
-
                 cfg.CreateMap<QuestionViewModel, QuestionDto>();
                 cfg.CreateMap<QuestionDto, QuestionViewModel>();
 
@@ -45,42 +42,52 @@ namespace UI.Controllers
         public ActionResult Testing(int testId)
         {
             TestViewModel test = _mapper.Map<TestDto, TestViewModel>(_service.Get(testId));
-
+            //List<Question> questions = test.Questions;
 
             foreach (var item in test.Questions)
                 if (item != null)
                     item.AnswerVariant = item.Answers.Count(a => a.IsTrue) > 1 ? AnswerVarian.MoreThanOne : AnswerVarian.One;
 
+            //return View(questions);
             return View(test);
         }
 
 
         [HttpPost]
-        public ActionResult EndTest(TestViewModel test, int userId)
+        public ActionResult EndTest(TestViewModel test) //questions=null
         {
+            int count = test.Questions.Count;
+
             foreach (var question in test.Questions)
             {
-                //if (question.ChoosenAnswer)
-                //{
-                //    break;
-
-                //}
                 foreach (var answer in question.Answers)
                 {
-                    if (answer.IsAnswered)
+                    _service.AddStudentAnswer(new StudentAnswerDto()
                     {
-                        _service.AddStudentAnswer(new StudentAnswerDto()
-                        {
-                            StudentAnswerGuid = Guid.NewGuid(),
-                            AnswerId = answer.AnswerId,
-                            QuestionId = question.QuestionId,
-                            UserId = userId
-                        });
+                        AnswerId = answer.AnswerId,
+                        QuestionId = question.QuestionId,
+                        //UserId = User.UserId TODO:Добавить юзера.
+                    });
+                    if (answer.IsTrue == answer.IsAnswered)
+                    { }
+                    else
+                    {
+                        count -= 1;
+                        break;
                     }
                 }
             }
 
-            return View(new TestPassViewModel() { Score = 999, Time = new DateTime(1994, 12, 1), Test = test });
+            TestPassViewModel testPass = new TestPassViewModel()
+            {
+                Test = test,
+                Score = count
+                //User = Test.User;
+            };
+
+
+
+            return View(testPass);
         }
     }
 }

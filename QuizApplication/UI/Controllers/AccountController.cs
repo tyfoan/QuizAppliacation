@@ -48,8 +48,8 @@ namespace UI.Controllers
 
                 if (WebSecurity.UserExists(model.Email))
                 {
-                    if (!_accountService.IsUserBlocked(model.Email))
-                    {
+                    //if (!accountservice.IsUserBlocked(model.Login))
+                    //{
 
                     if (WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe))
                     {
@@ -57,10 +57,10 @@ namespace UI.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                     ModelState.AddModelError("", "Вы ввели неправильный логин или пароль");
-                    return View(model);
-                    }
-                    else
-                        ModelState.AddModelError("", "Аккаунт был заблокирован");
+                    //    return System.Web.UI.WebControls.View(model);
+                    //}
+                    //else
+                    //    ModelState.AddModelError("", "Аккаунт был заблокирован");
                 }
                 else
                     ModelState.AddModelError("", "Такого аккаунта не существует");

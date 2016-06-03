@@ -61,6 +61,10 @@
                             @Html.Partial("_UnblockButton", item.UserId)
                         }
                     </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+                        @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                    </td>
                 </tr>
             }        
         }

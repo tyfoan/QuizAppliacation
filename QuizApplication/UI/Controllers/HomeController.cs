@@ -3,7 +3,6 @@ using BLL.DTO;
 using BLL.Interfaces;
 using UI.Models.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace UI.Controllers
@@ -18,7 +17,6 @@ namespace UI.Controllers
         }
 
 #pragma warning disable 618
-
         public ActionResult Index()
         {
             Mapper.CreateMap<ThemeDto, ThemeViewModel>();
@@ -28,7 +26,7 @@ namespace UI.Controllers
 
             //Mapper.CreateMap<Subject, SubjectDTO>();
             Mapper.CreateMap<SubjectDto, SubjectViewModel>();
-            List<SubjectViewModel> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<SubjectViewModel>>(_service.GetAll().Take(3));
+            List<SubjectViewModel> subjects = Mapper.Map<IEnumerable<SubjectDto>, List<SubjectViewModel>>(_service.GetAll());
             return View(subjects);
         }
 #pragma warning restore 618

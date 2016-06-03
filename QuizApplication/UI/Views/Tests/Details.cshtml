@@ -1,13 +1,13 @@
 ﻿@model BLL.DTO.TestDto
 @{
-    ViewBag.Title = "Вопросы";
+    ViewBag.Title = "Details";
 }
 
 <h2>Вопросы</h2>
 <h4>Тест <a href="@Url.Action("Details", "Subjects", new { subjectId = Model.SubjectId })"> @Html.DisplayFor(model => model.Name)</a></h4>
 
 <p>
-    @Html.ActionLink("Добавить вопрос", "Create", "Questions", new { testId = ViewBag.TestId }, null)
+    @Html.ActionLink("Create New", "Create", "Questions", new { testId = ViewBag.TestId }, null)
 </p>
 <div>
     <hr />
@@ -24,9 +24,9 @@
                 <tr>
                     <td>@innerItem.QuestionContent</td>
                     <td>
-                        @Html.ActionLink("Редактировать", "Edit", "Questions", new { id = innerItem.QuestionId, testId = ViewBag.TestId }, null) |
-                        @Html.ActionLink("К отвеам", "Details", "Questions", new { id = innerItem.QuestionId, testId = ViewBag.TestId }, null) |
-                        @Html.ActionLink("Удалить", "Delete", "Questions", new { id = innerItem.QuestionId, testId = ViewBag.TestId }, null)
+                        @Html.ActionLink("Edit question", "Edit", "Questions", new { id = innerItem.QuestionId, testId = ViewBag.TestId }, null) |
+                        @Html.ActionLink("Go to answers", "Details", "Questions", new { id = innerItem.QuestionId, testId = ViewBag.TestId }, null) |
+                        @Html.ActionLink("Delete question", "Delete", "Questions", new { id = innerItem.QuestionId, testId = ViewBag.TestId }, null)
                     </td>
                 </tr>
             </tbody>

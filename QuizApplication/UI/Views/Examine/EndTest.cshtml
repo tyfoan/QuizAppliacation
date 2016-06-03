@@ -11,6 +11,9 @@
     <tr>
         <td>Email: </td>
         <td>@User.Identity.Name</td>
+        @{
+            //TODO: фио юзера
+        }
     </tr>
     <tr>
         <td>@Html.DisplayNameFor(m => m.Test.Duration)</td>
@@ -21,8 +24,7 @@
         <td>@Model.Score</td>
     </tr>
     <tr>
-        <td>@Html.DisplayNameFor(m => m.Test.Name)</td>
-        <td>@Model.Test.Name</td>
+        <td>@Html.DisplayNameFor(m => m.Time)</td>
+        <td>@Model.Time</td>
     </tr>
 </table>
-<a class="btn btn-success" href="@Url.Action("List", "Catalog")">Закончить тест</a>
